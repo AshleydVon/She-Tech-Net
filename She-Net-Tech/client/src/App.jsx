@@ -1,43 +1,33 @@
-import { Outlet } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Courses from './components/Courses';
+import Mentorship from './components/Mentorship';
+import JobBoard from './components/JobBoard';
+import Community from './components/Networking';
+import Events from './components/Events';
+import CodingChallenge from './components/CodingChallenge';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
-
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
-
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
-function App() {
+const App = () => {
   return (
-    <ApolloProvider client={client}>
-      <StoreProvider>
-        <Nav />
-        <Outlet />
-      </StoreProvider>
-    </ApolloProvider>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/mentorship" element={<Mentorship />} />
+          <Route path="/job-board" element={<JobBoard />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/coding-challenge" element={<CodingChallenge />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
