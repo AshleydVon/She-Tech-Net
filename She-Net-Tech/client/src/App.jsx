@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Courses from './components/Courses';
-import Mentorship from './components/Mentorship';
-import JobBoard from './components/JobBoard';
+import Mentorship from './pages/Mentorship';
+import JobBoard from './pages/Jobs';
 import Community from './components/Networking';
 import Events from './components/Events';
-import CodingChallenge from './components/CodingChallenge';
+import CodingChallenge from './components/CodingChallenges';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 

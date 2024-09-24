@@ -1,31 +1,31 @@
-export function pluralize(name, count) {
+export const pluralize = (name, count) => {
   if (count === 1) {
     return name;
   }
   return name + 's';
-}
+};
 
-export function idbPromise(storeName, method, object) {
+// Save and retrieve from IndexedDB
+export const idbPromise = (storeName, method, object) => {
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open('shop-shop', 1);
+    const request = window.indexedDB.open('she-tech-net', 1);
     let db, tx, store;
-    request.onupgradeneeded = function(e) {
+
+    request.onupgradeneeded = function (e) {
       const db = request.result;
-      db.createObjectStore('products', { keyPath: '_id' });
-      db.createObjectStore('categories', { keyPath: '_id' });
-      db.createObjectStore('cart', { keyPath: '_id' });
+      db.createObjectStore('jobBoard', { keyPath: '_id' });
     };
 
-    request.onerror = function(e) {
+    request.onerror = function (e) {
       console.log('There was an error');
     };
 
-    request.onsuccess = function(e) {
+    request.onsuccess = function (e) {
       db = request.result;
       tx = db.transaction(storeName, 'readwrite');
       store = tx.objectStore(storeName);
 
-      db.onerror = function(e) {
+      db.onerror = function (e) {
         console.log('error', e);
       };
 
@@ -36,7 +36,7 @@ export function idbPromise(storeName, method, object) {
           break;
         case 'get':
           const all = store.getAll();
-          all.onsuccess = function() {
+          all.onsuccess = function () {
             resolve(all.result);
           };
           break;
@@ -48,9 +48,9 @@ export function idbPromise(storeName, method, object) {
           break;
       }
 
-      tx.oncomplete = function() {
+      tx.oncomplete = function () {
         db.close();
       };
     };
   });
-}
+};
