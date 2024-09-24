@@ -1,69 +1,86 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
+// Fetch all courses
+export const QUERY_COURSES = gql`
+  query getCourses($category: String) {
+    courses(category: $category) {
       _id
-      name
+      title
       description
-      price
-      quantity
-      image
-      category {
-        _id
-      }
-    }
-  }
-`;
-
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ProductInput]) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
+      category
+      level
+      enrollments
+      author {
         name
+        email
       }
     }
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
+// Fetch all mentors
+export const QUERY_MENTORS = gql`
+  query getMentors($industry: String, $yearsOfExperience: Int) {
+    mentors(industry: $industry, yearsOfExperience: $yearsOfExperience) {
       _id
-      name
+      user {
+        name
+        email
+      }
+      expertise
+      industry
+      yearsOfExperience
+      availableTimeSlots
     }
   }
 `;
 
+// Fetch all jobs
+export const QUERY_JOBS = gql`
+  query getJobs($isWomenFriendly: Boolean, $supportsDiversity: Boolean) {
+    jobs(isWomenFriendly: $isWomenFriendly, supportsDiversity: $supportsDiversity) {
+      _id
+      company
+      position
+      description
+      applicationLink
+      postedDate
+      isWomenFriendly
+      supportsDiversity
+    }
+  }
+`;
+
+// Fetch all events
+export const QUERY_EVENTS = gql`
+  query getEvents {
+    events {
+      _id
+      title
+      description
+      date
+      registrationLink
+      tags
+    }
+  }
+`;
+
+// Fetch current user data
 export const QUERY_USER = gql`
-  {
+  query getUser {
     user {
-      firstName
-      lastName
-      orders {
+      _id
+      name
+      email
+      coursesEnrolled {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
+        title
+        description
+      }
+      mentorships {
+        _id
+        expertise
+        industry
       }
     }
   }

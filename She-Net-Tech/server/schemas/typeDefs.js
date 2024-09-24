@@ -54,7 +54,7 @@ const typeDefs = `
   type Query {
     users: [User]
     courses: [Course]
-    mentorships: [Mentor]
+    mentors: [Mentor] # Changed from "mentorships" to "mentors"
     jobs: [Job]
     events: [Event]
   }
