@@ -1,7 +1,6 @@
-// Description: This file contains the type definitions for the GraphQL schema.
 const typeDefs = `
   type User {
-    id: ID!
+    _id: ID!
     name: String!
     email: String!
     role: String!
@@ -11,7 +10,7 @@ const typeDefs = `
   }
 
   type Course {
-    id: ID!
+    _id: ID!
     title: String!
     description: String!
     category: String!
@@ -21,20 +20,20 @@ const typeDefs = `
     enrollments: Int
   }
 
-   type Auth {
+  type Auth {
     token: ID
     user: User
   }
 
   type Mentor {
-    id: ID!
+    _id: ID!
     user: User!
     expertise: [String]!
     availableTimeSlots: [String]!
   }
 
   type Job {
-    id: ID!
+    _id: ID!
     company: String!
     position: String!
     description: String!
@@ -44,7 +43,7 @@ const typeDefs = `
   }
 
   type Event {
-    id: ID!
+    _id: ID!
     title: String!
     description: String!
     date: String!
@@ -60,9 +59,9 @@ const typeDefs = `
     events: [Event]
   }
 
- type Mutation {
-    register(name: String!, email: String!, password: String!, role: String!): String
-    login(email: String!, password: String!): String
+  type Mutation {
+    register(name: String!, email: String!, password: String!, role: String!): Auth
+    login(email: String!, password: String!): Auth
     createCourse(title: String!, description: String!, category: String!, level: String!, content: String!): Course
     createMentorship(expertise: [String]!, availableTimeSlots: [String]!): Mentor
     createJob(company: String!, position: String!, description: String!, applicationLink: String!, postedDate: String!, isWomenFriendly: Boolean!): Job
