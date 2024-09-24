@@ -1,137 +1,169 @@
-const { User, Product, Category, Order } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const bcrypt = require('bcryptjs');
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Course, Mentor, Job, Event } = require('../models');
+const signToken = require('../utils/auth'); 
 
+// Define the query and mutation functionality to work with the Mongoose models
 const resolvers = {
   Query: {
-    categories: async () => {
-      return await Category.find();
-    },
-    products: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
+    users: async () => await User.find(),
+    courses: async () => await Course.find(),
+    mentorships: async () => await Mentor.find(),
+    jobs: async () => await Job.find(),
+    events: async () => await Event.find(),
+  },
+  // Define the resolvers for a query with a specific user ID
+  Mutation: {
+    register: async (parent, { name, email, password, role }) => {
+      const userExists = await User.findOne({ email });
+      if (userExists) {
+        throw new AuthenticationError('User already exists');
       }
 
-      if (name) {
-        params.name = {
-          $regex: name
-        };
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = new User({ name, email, password: hashedPassword, role });
+      await user.save();
+
+      const token = signToken(user); 
+      return { token, user };
+    },
+
+    // Add a login mutation
+    login: async (_, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('User does not exist');
       }
 
-      return await Product.find(params).populate('category');
-    },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
-    },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
+      const validPassword = await bcrypt.compare(password, user.password);
+      if (!validPassword) {
+        throw new AuthenticationError('Invalid credentials');
       }
 
-      throw AuthenticationError;
+      const token = signToken(user);  
+      return { token, user };
     },
-    order: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
 
-        return user.orders.id(_id);
-      }
+    // Add a mutation for creating a course
+    createCourse: async (_, { title, description, category, level, content }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
 
-      throw AuthenticationError;
-    },
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      await Order.create({ products: args.products.map(({ _id }) => _id) });
-      // eslint-disable-next-line camelcase
-      const line_items = [];
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`]
-            },
-            unit_amount: product.price * 100,
-          },
-          quantity: product.purchaseQuantity,
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items,
-        mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
+      const course = new Course({
+        title,
+        description,
+        category,
+        level,
+        content,
+        author: user.userId,
       });
 
-      return { session: session.id };
+      await course.save();
+      return course;
+    },
+
+    // Add a mutation for creating a mentorship
+    createMentorship: async (_, { expertise, availableTimeSlots }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const mentorship = new Mentor({
+        user: user.userId,
+        expertise,
+        availableTimeSlots,
+      });
+
+      await mentorship.save();
+      return mentorship;
+    },
+
+    // Add a mutation for creating a job
+    createJob: async (_, { company, position, description, applicationLink, postedDate, isWomenFriendly }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const job = new Job({
+        company,
+        position,
+        description,
+        applicationLink,
+        postedDate,
+        isWomenFriendly,
+      });
+
+      await job.save();
+      return job;
+    },
+
+    // Add a mutation for creating an event
+    createEvent: async (_, { title, description, date, registrationLink, tags }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const event = new Event({
+        title,
+        description,
+        date,
+        registrationLink,
+        tags,
+      });
+
+      await event.save();
+      return event;
+    },
+
+    // Add a mutation for enrolling in a course
+    enrollCourse: async (_, { courseId }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const course = await Course.findById(courseId);
+      if (!course) {
+        throw new Error('Course not found');
+      }
+
+      course.enrollments++;
+      await course.save();
+      return course;
+    },
+
+    // Add a mutation for enrolling in an event
+    enrollEvent: async (_, { eventId }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const event = await Event.findById(eventId);
+      if (!event) {
+        throw new Error('Event not found');
+      }
+
+      // Increment the enrollments count and save the event
+      event.enrollments++;
+      await event.save();
+      return event;
+    },
+
+    // Add a mutation for applying to a job
+    applyJob: async (_, { jobId }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const job = await Job.findById(jobId);
+      if (!job) {
+        throw new Error('Job not found');
+      }
+
+      job.applicants.push(user.userId); 
+      await job.save();
+      return job;
+    },
+
+    // Add a mutation for updating a user
+    updateUser: async (_, { name, email, role, skills, bio, profileImage }, { user }) => {
+      if (!user) throw new AuthenticationError('Not authenticated');
+
+      const updatedUser = await User.findByIdAndUpdate(
+        user.userId,
+        { name, email, role, skills, bio, profileImage },
+        { new: true }
+      );
+
+      return updatedUser; 
     },
   },
-  Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
-
-      return { token, user };
-    },
-    addOrder: async (parent, { products }, context) => {
-      if (context.user) {
-        const order = new Order({ products });
-
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-
-        return order;
-      }
-
-      throw AuthenticationError;
-    },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-      }
-
-      throw AuthenticationError;
-    },
-    updateProduct: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
-
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw AuthenticationError;
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
-
-      const token = signToken(user);
-
-      return { token, user };
-    }
-  }
 };
 
 module.exports = resolvers;
