@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Course, Mentor, Job, Event } = require('../models');
-const signToken = require('../utils/auth'); 
+const { signToken } = require('../utils/auth');
 
 // Define the query and mutation functionality to work with the Mongoose models
 const resolvers = {
@@ -12,8 +12,8 @@ const resolvers = {
     jobs: async () => await Job.find(),
     events: async () => await Event.find(),
   },
-  // Define the resolvers for a query with a specific user ID
   Mutation: {
+    // Mutation for user registration
     register: async (parent, { name, email, password, role }) => {
       const userExists = await User.findOne({ email });
       if (userExists) {
@@ -28,7 +28,7 @@ const resolvers = {
       return { token, user };
     },
 
-    // Add a login mutation
+    // Mutation for user login
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -44,7 +44,7 @@ const resolvers = {
       return { token, user };
     },
 
-    // Add a mutation for creating a course
+    // Mutation for creating a course
     createCourse: async (_, { title, description, category, level, content }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -54,19 +54,19 @@ const resolvers = {
         category,
         level,
         content,
-        author: user.userId,
+        author: user._id,
       });
 
       await course.save();
       return course;
     },
 
-    // Add a mutation for creating a mentorship
+    // Mutation for creating a mentorship
     createMentorship: async (_, { expertise, availableTimeSlots }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
       const mentorship = new Mentor({
-        user: user.userId,
+        user: user._id,
         expertise,
         availableTimeSlots,
       });
@@ -75,7 +75,7 @@ const resolvers = {
       return mentorship;
     },
 
-    // Add a mutation for creating a job
+    // Mutation for creating a job posting
     createJob: async (_, { company, position, description, applicationLink, postedDate, isWomenFriendly }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -92,7 +92,7 @@ const resolvers = {
       return job;
     },
 
-    // Add a mutation for creating an event
+    // Mutation for creating an event
     createEvent: async (_, { title, description, date, registrationLink, tags }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -108,7 +108,7 @@ const resolvers = {
       return event;
     },
 
-    // Add a mutation for enrolling in a course
+    // Mutation for enrolling in a course
     enrollCourse: async (_, { courseId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -122,7 +122,7 @@ const resolvers = {
       return course;
     },
 
-    // Add a mutation for enrolling in an event
+    // Mutation for enrolling in an event
     enrollEvent: async (_, { eventId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -137,7 +137,7 @@ const resolvers = {
       return event;
     },
 
-    // Add a mutation for applying to a job
+    // Mutation for applying to a job
     applyJob: async (_, { jobId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
@@ -146,17 +146,17 @@ const resolvers = {
         throw new Error('Job not found');
       }
 
-      job.applicants.push(user.userId); 
+      job.applicants.push(user._id); 
       await job.save();
       return job;
     },
 
-    // Add a mutation for updating a user
+    // Mutation for updating a user
     updateUser: async (_, { name, email, role, skills, bio, profileImage }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
 
       const updatedUser = await User.findByIdAndUpdate(
-        user.userId,
+        user._id,
         { name, email, role, skills, bio, profileImage },
         { new: true }
       );
