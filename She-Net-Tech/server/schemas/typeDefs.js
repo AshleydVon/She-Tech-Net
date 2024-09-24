@@ -1,66 +1,76 @@
+// Description: This file contains the type definitions for the GraphQL schema.
 const typeDefs = `
-  type Category {
-    _id: ID
-    name: String
-  }
-
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
-  }
-
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
   type User {
-    _id: ID
-    firstName: String
-    lastName: String
-    email: String
-    orders: [Order]
+    id: ID!
+    name: String!
+    email: String!
+    role: String!
+    skills: [String]
+    bio: String
+    profileImage: String
   }
 
-  type Checkout {
-    session: ID
+  type Course {
+    id: ID!
+    title: String!
+    description: String!
+    category: String!
+    level: String!
+    content: String!
+    author: User!
+    enrollments: Int
   }
 
-  type Auth {
+   type Auth {
     token: ID
     user: User
   }
 
-  input ProductInput {
-    _id: ID
-    purchaseQuantity: Int
-    name: String
-    image: String
-    price: Float
-    quantity: Int
+  type Mentor {
+    id: ID!
+    user: User!
+    expertise: [String]!
+    availableTimeSlots: [String]!
+  }
+
+  type Job {
+    id: ID!
+    company: String!
+    position: String!
+    description: String!
+    applicationLink: String!
+    postedDate: String!
+    isWomenFriendly: Boolean!
+  }
+
+  type Event {
+    id: ID!
+    title: String!
+    description: String!
+    date: String!
+    registrationLink: String!
+    tags: [String]
   }
 
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ProductInput]): Checkout
+    users: [User]
+    courses: [Course]
+    mentorships: [Mentor]
+    jobs: [Job]
+    events: [Event]
   }
 
-  type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
-    login(email: String!, password: String!): Auth
+ type Mutation {
+    register(name: String!, email: String!, password: String!, role: String!): String
+    login(email: String!, password: String!): String
+    createCourse(title: String!, description: String!, category: String!, level: String!, content: String!): Course
+    createMentorship(expertise: [String]!, availableTimeSlots: [String]!): Mentor
+    createJob(company: String!, position: String!, description: String!, applicationLink: String!, postedDate: String!, isWomenFriendly: Boolean!): Job
+    createEvent(title: String!, description: String!, date: String!, registrationLink: String!, tags: [String]): Event
+    enrollCourse(courseId: ID!): Course
+    enrollEvent(eventId: ID!): Event
+    applyJob(jobId: ID!): Job
+    updateUser(name: String, email: String, role: String, skills: [String], bio: String, profileImage: String): User
   }
 `;
 

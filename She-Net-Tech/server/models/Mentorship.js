@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+const mentorshipSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -26,11 +25,10 @@ const productSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: 'category',
     required: true
   }
 });
 
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+const Mentorship = mongoose.model('mentorship', mentorshipSchema);  // Capitalize the model name for consistency
+module.exports = Mentorship; 

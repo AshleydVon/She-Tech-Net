@@ -3,9 +3,11 @@ const { User, Product, Category } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
-  await cleanDB('Category', 'categories');
-  await cleanDB('Product', 'products');
+  await cleanDB('courses', 'courses');
+  await cleanDB('events', 'events');
   await cleanDB('User', 'users');
+  await cleanDB('jobs', 'jobs');
+  await cleanDB('mentorship', 'mentorship');
 
   const categories = await Category.insertMany([
     { name: 'Food' },
