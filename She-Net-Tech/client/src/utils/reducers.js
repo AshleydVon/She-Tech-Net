@@ -1,84 +1,44 @@
 import {
-  UPDATE_PRODUCTS,
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-  REMOVE_FROM_CART,
-  ADD_MULTIPLE_TO_CART,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
-  CLEAR_CART,
-  TOGGLE_CART
-} from "./actions";
+  LOGIN_USER,
+  LOGOUT_USER,
+  ADD_EVENT,
+  ADD_COURSE,
+  ADD_TO_JOB_BOARD,
+  REMOVE_FROM_JOB_BOARD,
+} from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case LOGIN_USER:
       return {
         ...state,
-        products: [...action.products],
+        loggedIn: true,
       };
-
-    case ADD_TO_CART:
+    case LOGOUT_USER:
       return {
         ...state,
-        cartOpen: true,
-        cart: [...state.cart, action.product],
+        loggedIn: false,
       };
-
-    case ADD_MULTIPLE_TO_CART:
+    case ADD_COURSE:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        courses: [...state.courses, action.course],
       };
-
-    case UPDATE_CART_QUANTITY:
+    case ADD_EVENT:
       return {
         ...state,
-        cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
-          }
-          return product
-        })
+        events: [...state.events, action.event],
       };
-
-    case REMOVE_FROM_CART:
-      let newState = state.cart.filter(product => {
-        return product._id !== action._id;
-      });
-
+    case ADD_TO_JOB_BOARD:
       return {
         ...state,
-        cartOpen: newState.length > 0,
-        cart: newState
+        jobBoard: [...state.jobBoard, action.job],
       };
-
-    case CLEAR_CART:
+    case REMOVE_FROM_JOB_BOARD:
       return {
         ...state,
-        cartOpen: false,
-        cart: []
+        jobBoard: state.jobBoard.filter((job) => job._id !== action._id),
       };
-
-    case TOGGLE_CART:
-      return {
-        ...state,
-        cartOpen: !state.cartOpen
-      };
-
-    case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
-    case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory
-      }
-
     default:
       return state;
   }
