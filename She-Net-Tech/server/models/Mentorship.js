@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const mentorshipSchema = new Schema({
+
   mentor: {
     userId: {
       type: Schema.Types.ObjectId,
@@ -18,7 +18,3 @@ const mentorshipSchema = new Schema({
       required: true
     }
   }
-});
-
-const Mentorship = mongoose.model('mentorship', mentorshipSchema);  
-module.exports = Mentorship; 
