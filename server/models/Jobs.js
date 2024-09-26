@@ -33,6 +33,6 @@ isWomenFriendly: {
 },
 });
 
-const Jobs = mongoose.model('Jobs', jobsSchema);
+const Jobs = mongoose.model('Job', jobsSchema);
 
 module.exports = Jobs;

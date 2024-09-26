@@ -1,24 +1,51 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 
 const mentorshipSchema = new Schema({
-  mentor: {
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'user_db',  
-      required: true
-    },
-    expertise: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    availableTimeSlots: {
-      type: [String],  
-      required: true
-    }
+  name: {
+    type: String,
+    
+    trim: true
+  },
+  description: {
+    type: String
+  },
+  image: {
+    type: String
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0.99
+  },
+  quantity: {
+    type: Number,
+    min: 0,
+    default: 0
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  expertise: {
+    type: String,
+    trim: true
+  },
+  availableTimeSlots: {
+    type: [String],
+  },
+  industry: {
+    type: String,
+    trim: true
+  },
+  yearsOfExperience: {
+    type: Number,
   }
 });
 
-const Mentorship = mongoose.model('Mentorship', mentorshipSchema);  
-module.exports = Mentorship; 
+const Mentorship = model('Mentorship', mentorshipSchema);
+
+module.exports = Mentorship;
