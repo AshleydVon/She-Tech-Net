@@ -1,0 +1,28 @@
+.home-container {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .grid-item {
+    padding: 50px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .grid-item h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .grid-item:hover {
+    background-color: #e9ecef;
+  }
+  

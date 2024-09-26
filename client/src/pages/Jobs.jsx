@@ -1,14 +1,26 @@
-import React from 'react';
-import './JobBoard.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/mainpages.css';
 
-const JobBoard = () => {
+function JobsPage() {
   return (
-    <div className="job-board">
-      <h1>Job Board</h1>
-      <p>Browse job opportunities from our partner companies.</p>
-      {/* Job listings */}
-    </div>
+    <>
+      <Navbar />
+      <main className="jobs-page">
+        <section className="content">
+          <h1>Jobs</h1>
+          <div className="description">
+            <p>Explore job opportunities that help women advance in their tech careers.</p>
+          </div>
+          {/* Placeholder for job listings */}
+          <div className="job-listings">
+            {/* Mockup-style layout for job posts */}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
-};
+}
 
-export default JobBoard;
+export default JobsPage;
