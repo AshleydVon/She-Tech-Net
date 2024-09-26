@@ -1,6 +1,6 @@
 const axios = require('axios');
 const db = require('./connection');
-const { User, Course, Mentorship, Job, Event } = require('../models');
+const { User, Course, Mentorships, Jobs, Events } = require('../models');
 const cleanDB = require('./cleanDB');
 
 const API_KEY = '7R99IvcW04F32iBmWGGW2YLQBansXD6ZWynqx9uXnrmLZZMG';
@@ -9,16 +9,15 @@ const API_SECRET = 'RCGbpYtW9s5QCStN27GuVtFqn9P3XyVrmvb2TcBaokThbERlmP7AwGlL8hpx
 const GOOGLE_CLIENT_ID = '89152183018-7bvcajfr8lo9ba9c3c6dujj7atdbf77c.apps.googleusercontent.com';
 
 db.once('open', async () => {
-  await cleanDB('Course', 'courses');
+  await cleanDB('Courses', 'courses');
   await cleanDB('User', 'users');
   await cleanDB('Mentorship', 'mentorships');
-  await cleanDB('Job', 'jobs');
-  await cleanDB('Event', 'events');
+  await cleanDB('Jobs', 'jobs');
+  await cleanDB('Events', 'events');
 
   const users = await User.insertMany([
     {
-      firstName: 'Pamela', 
-      lastName: 'Washington',
+      name: 'Pamela Washington',
       email: 'pamela@testmail.com',
       password: 'password12345',
       role: 'Instructor',
@@ -26,8 +25,7 @@ db.once('open', async () => {
       bio: 'An experienced software developer.',
     },
     {
-      firstName: 'Elijah' ,
-      lastName: 'Holt',
+      name: 'Elijah Holt',
       email: 'eholt@testmail.com',
       password: 'password12345',
       role: 'Student',
@@ -62,17 +60,17 @@ db.once('open', async () => {
     console.error('Error fetching courses from Courseca API:', error);
   }
 
-  const mentorships = await Mentorship.insertMany([
+  const mentorships= = await Mentorships.insertMany([
     {
       user: users[0]._id, 
-      price: 100 ,
+      expertise: ['JavaScript', 'Node.js'],
       industry: 'Software Development',
       yearsOfExperience: 5,
       availableTimeSlots: ['Monday 10am-12pm', 'Wednesday 2pm-4pm'],
     },
     {
       user: users[1]._id,
-      price: 100 ,
+      expertise: ['HTML', 'CSS'],
       industry: 'Web Development',
       yearsOfExperience: 2,
       availableTimeSlots: ['Tuesday 1pm-3pm', 'Thursday 11am-1pm'],
@@ -122,3 +120,4 @@ db.once('open', async () => {
 
   process.exit();
 });
+

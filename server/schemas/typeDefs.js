@@ -25,11 +25,13 @@ const typeDefs = `
     user: User
   }
 
-  type Mentor {
+  type Mentorship {
     _id: ID!
     user: User!
     expertise: [String]!
     availableTimeSlots: [String]!
+    industry: String
+    yearsOfExperience: Int
   }
 
   type Job {
@@ -54,7 +56,7 @@ const typeDefs = `
   type Query {
     users: [User]
     courses: [Course]
-    mentorships: [Mentor]
+    mentorships(industry: String, yearsOfExperience: Int): [Mentorship]  
     jobs: [Job]
     events: [Event]
   }
@@ -63,7 +65,7 @@ const typeDefs = `
     register(name: String!, email: String!, password: String!, role: String!): Auth
     login(email: String!, password: String!): Auth
     createCourse(title: String!, description: String!, category: String!, level: String!, content: String!): Course
-    createMentorship(expertise: [String]!, availableTimeSlots: [String]!): Mentor
+    createMentorship(expertise: [String]!, availableTimeSlots: [String]!, industry: String, yearsOfExperience: Int): Mentorship  
     createJob(company: String!, position: String!, description: String!, applicationLink: String!, postedDate: String!, isWomenFriendly: Boolean!): Job
     createEvent(title: String!, description: String!, date: String!, registrationLink: String!, tags: [String]): Event
     enrollCourse(courseId: ID!): Course

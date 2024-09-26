@@ -25,7 +25,7 @@ content : {
 },
 auther: {
     type: Schema.Types.ObjectId,
-    ref: 'user_db',
+    ref: 'User',
     required: true
 },
 enrollments: {
@@ -35,6 +35,6 @@ enrollments: {
 }
 });
 
-const Courses = mongoose.model('Courses', coursesSchema);
+const Course = mongoose.model('Course', coursesSchema);
 
-module.exports = Courses;
+module.exports = Course;
