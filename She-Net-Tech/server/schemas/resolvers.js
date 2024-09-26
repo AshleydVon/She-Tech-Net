@@ -1,46 +1,49 @@
 const bcrypt = require('bcryptjs');
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Course, Mentorship, Job, Event } = require('../models');
+const { User, Course, Mentor, Job, Event } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return await User.find(); 
-    },
+    users: async () => await User.find(),
     courses: async () => await Course.find(),
-    mentorships: async (_, { industry, yearsOfExperience }) => {
-      const filters = {};
-      if (industry) filters.industry = industry;
-      if (yearsOfExperience) filters.yearsOfExperience = yearsOfExperience;
-      
-      return await Mentorship.find(filters).populate('user');
-    },
+    mentorships: async () => await Mentor.find(),
     jobs: async () => await Job.find(),
     events: async () => await Event.find(),
   },
   Mutation: {
     register: async (parent, { name, email, password, role }) => {
       const userExists = await User.findOne({ email });
-      if (userExists) throw new AuthenticationError('User already exists');
+      if (userExists) {
+        throw new AuthenticationError('User already exists');
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = new User({ name, email, password: hashedPassword, role });
       await user.save();
-      const token = signToken(user);
+
+      const token = signToken(user); 
       return { token, user };
     },
 
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
-      if (!user) throw new AuthenticationError('User does not exist');
+      if (!user) {
+        throw new AuthenticationError('User does not exist');
+      }
+
       const validPassword = await bcrypt.compare(password, user.password);
-      if (!validPassword) throw new AuthenticationError('Invalid credentials');
-      const token = signToken(user);
+      if (!validPassword) {
+        throw new AuthenticationError('Invalid credentials');
+      }
+
+      const token = signToken(user);  
       return { token, user };
     },
 
     createCourse: async (_, { title, description, category, level, content }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const course = new Course({
         title,
         description,
@@ -49,25 +52,27 @@ const resolvers = {
         content,
         author: user._id,
       });
+
       await course.save();
       return course;
     },
 
-    createMentorship: async (_, { expertise, availableTimeSlots, industry, yearsOfExperience }, { user }) => {
+    createMentorship: async (_, { expertise, availableTimeSlots }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
-      const mentorship = new Mentorship({
+
+      const mentorship = new Mentor({
         user: user._id,
         expertise,
         availableTimeSlots,
-        industry,
-        yearsOfExperience
       });
+
       await mentorship.save();
       return mentorship;
     },
 
     createJob: async (_, { company, position, description, applicationLink, postedDate, isWomenFriendly }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const job = new Job({
         company,
         position,
@@ -76,12 +81,14 @@ const resolvers = {
         postedDate,
         isWomenFriendly,
       });
+
       await job.save();
       return job;
     },
 
     createEvent: async (_, { title, description, date, registrationLink, tags }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const event = new Event({
         title,
         description,
@@ -89,14 +96,19 @@ const resolvers = {
         registrationLink,
         tags,
       });
+
       await event.save();
       return event;
     },
 
     enrollCourse: async (_, { courseId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const course = await Course.findById(courseId);
-      if (!course) throw new Error('Course not found');
+      if (!course) {
+        throw new Error('Course not found');
+      }
+
       course.enrollments++;
       await course.save();
       return course;
@@ -104,8 +116,12 @@ const resolvers = {
 
     enrollEvent: async (_, { eventId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const event = await Event.findById(eventId);
-      if (!event) throw new Error('Event not found');
+      if (!event) {
+        throw new Error('Event not found');
+      }
+
       event.enrollments++;
       await event.save();
       return event;
@@ -113,23 +129,30 @@ const resolvers = {
 
     applyJob: async (_, { jobId }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const job = await Job.findById(jobId);
-      if (!job) throw new Error('Job not found');
-      job.applicants.push(user._id);
+      if (!job) {
+        throw new Error('Job not found');
+      }
+
+      job.applicants.push(user._id); 
       await job.save();
       return job;
     },
 
     updateUser: async (_, { name, email, role, skills, bio, profileImage }, { user }) => {
       if (!user) throw new AuthenticationError('Not authenticated');
+
       const updatedUser = await User.findByIdAndUpdate(
         user._id,
         { name, email, role, skills, bio, profileImage },
         { new: true }
       );
-      return updatedUser;
+
+      return updatedUser; 
     },
   },
 };
 
 module.exports = resolvers;
+
