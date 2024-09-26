@@ -24,13 +24,13 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  Role: {
+  role: {
     type: String,
     required: true,
     default: 'user'
   },
-  Sckill: {
-    type: String,
+  skills: {
+    type: [String],
     required: false
   },
   bio: {
