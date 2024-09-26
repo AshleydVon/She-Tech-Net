@@ -1,15 +1,36 @@
-import React from 'react';
-import './Home.css';
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar'; // Reusing the Navbar component
+import Footer from '../components/Footer'; // Assuming a Footer component
+import '../styles/HomePage.css';
 
-const Home = () => {
+function HomePage() {
   return (
-    <div className="home">
+    <>
+      {/* Navbar */}
       <Navbar />
-      <h1>Welcome to SHE-TECH-IN</h1>
-      <p>Empowering women in tech through mentorship, education, and networking.</p>
-      
-    </div>
-  );
-};
 
-export default Home;
+      {/* Main content: 2x2 Grid for Courses, Events, Mentorship, Jobs */}
+      <div className="home-container">
+        <div className="home-grid">
+          <Link to="/courses" className="grid-item">
+            <h2>Courses</h2>
+          </Link>
+          <Link to="/events" className="grid-item">
+            <h2>Events</h2>
+          </Link>
+          <Link to="/mentorship" className="grid-item">
+            <h2>Mentorship</h2>
+          </Link>
+          <Link to="/jobs" className="grid-item">
+            <h2>Jobs</h2>
+          </Link>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <Footer />
+    </>
+  );
+}
+
+export default HomePage;

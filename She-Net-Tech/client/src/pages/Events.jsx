@@ -1,14 +1,26 @@
-import React from 'react';
-import './Events.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/mainpages.css';
 
-const Events = () => {
+function EventsPage() {
   return (
-    <div className="events">
-      <h1>Upcoming Events</h1>
-      <p>Join our upcoming events and networking opportunities.</p>
-      {/* Event listings would be mapped here */}
-    </div>
+    <>
+      <Navbar />
+      <main className="events-page">
+        <section className="content">
+          <h1>Events</h1>
+          <div className="description">
+            <p>Stay updated on upcoming events that support women in the tech community.</p>
+          </div>
+          {/* Placeholder for event listings */}
+          <div className="event-listings">
+            {/* Follow mockup layout */}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
-};
+}
 
-export default Events;
+export default EventsPage;

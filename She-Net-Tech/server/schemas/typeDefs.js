@@ -1,11 +1,13 @@
 const typeDefs = `
   type User {
     _id: ID!
-    name: String!
+    firstName: String!
+    lastName: String!
     email: String!
     role: String!
     skills: [String]
     bio: String
+    
     profileImage: String
   }
 
@@ -69,6 +71,8 @@ const typeDefs = `
     enrollCourse(courseId: ID!): Course
     enrollEvent(eventId: ID!): Event
     applyJob(jobId: ID!): Job
+    addUser (firstName: String!, lastName: String!, email: String!, password: String!): Auth
+   
     updateUser(name: String, email: String, role: String, skills: [String], bio: String, profileImage: String): User
   }
 `;

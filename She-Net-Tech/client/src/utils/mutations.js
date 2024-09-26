@@ -8,6 +8,19 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const ADD_USER = gql`
+  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+      token
+      user {
+        _id
+        firstName
+        lastName
+      }
+    }
+  }
+`;
+
 export const ADD_EVENT = gql`
   mutation addEvent($title: String!, $description: String!) {
     addEvent(title: $title, description: $description) {

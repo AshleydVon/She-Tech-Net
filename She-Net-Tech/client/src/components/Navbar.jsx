@@ -1,20 +1,47 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import Auth from '../utils/auth'; 
+import '../styles/Navbar.css';
 
-const Navbar = () => {
+function Navbar() {
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <ul className="navbar-links flex-row">
+          <li className="mx-1">
+            <Link to="/courses">Courses</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/events">Events</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/mentorship">Mentorship</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/jobs">Jobs</Link>
+          </li>
+        </ul>
+      );
+    }
+    return null;
+  }
+
   return (
-    <nav className="navbar">
-      <ul className="navbar-links">
-         <li><Link to="/">Home</Link></li>
-        
-       
-        <li><Link to="/signup">Sign up</Link></li>
-        <li><Link to="/signup">Sign in</Link></li>
-        
-      </ul>
-    </nav>
+    <header className="navbar">
+      <div className="navbar-container flex-row">
+        {/* Left side: Logo or Name */}
+        <div className="navbar-logo">
+          <h1>
+            <Link to="/">SHE-TECH-IN</Link>
+          </h1>
+        </div>
+
+        {/* Right side: Links */}
+        <nav className="navbar-links-container">
+          {showNavigation()}
+        </nav>
+      </div>
+    </header>
   );
-};
+}
 
 export default Navbar;

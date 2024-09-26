@@ -1,33 +1,47 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Courses from './components/Courses';
-import Mentorship from './pages/Mentorship';
-import JobBoard from './pages/Jobs';
-import Community from './components/Networking';
-import Events from './components/Events';
-import CodingChallenge from './components/CodingChallenges';
+import { Outlet } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { StoreProvider } from './utils/GlobalState'; // Import the corrected StoreProvider
 
-const App = () => {
+// Set up HTTP link for Apollo Client (connecting to your GraphQL API)
+const httpLink = createHttpLink({
+  uri: '/graphql',  // Adjust this URI based on your backend endpoint
+});
+
+// Set up Authorization link to add the token to headers
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// Initialize Apollo Client with cache and authLink
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+function App() {
   return (
-    <Router>
-      <div className="app">
+    <ApolloProvider client={client}>
+      <StoreProvider> {/* Make sure you're using StoreProvider */}
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/mentorship" element={<Mentorship />} />
-          <Route path="/job-board" element={<JobBoard />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/coding-challenge" element={<CodingChallenge />} />
-        </Routes>
+        <Outlet />  {/* This will render the child routes based on your main.jsx router */}
         <Footer />
-      </div>
-    </Router>
+      </StoreProvider>
+    </ApolloProvider>
   );
-};
+}
 
 export default App;
