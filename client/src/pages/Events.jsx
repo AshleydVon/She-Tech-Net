@@ -1,11 +1,10 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+
 import '../styles/mainpages.css';
 
 function EventsPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="events-page">
         <section className="content">
           <h1>Events</h1>
@@ -18,7 +17,7 @@ function EventsPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

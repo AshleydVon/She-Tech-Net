@@ -20,11 +20,11 @@ const resolvers = {
     events: async () => await Event.find(),
   },
   Mutation: {
-    register: async (parent, { name, email, password, role }) => {
+    addUser: async (parent, { firstName, lastName, email, password, role }) => {
       const userExists = await User.findOne({ email });
       if (userExists) throw new AuthenticationError('User already exists');
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = new User({ name, email, password: hashedPassword, role });
+      const user = new User({ firstName, lastName, email, password: hashedPassword, role });
       await user.save();
       const token = signToken(user);
       return { token, user };

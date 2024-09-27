@@ -7,7 +7,7 @@ function HomePage() {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Main content: 2x2 Grid for Courses, Events, Mentorship, Jobs */}
       <div className="home-container">
@@ -27,8 +27,7 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
+     
     </>
   );
 }
