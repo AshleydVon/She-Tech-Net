@@ -1,31 +1,70 @@
 .navbar {
-    background-color: #f8f9fa;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+  background-color: #1E0036; /* Dark Purple background */
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for more elegance */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo h1 {
+  font-size: 32px;
+  color: #FF4ECD; /* Pink for the logo */
+  font-weight: bold;
+  letter-spacing: 1.5px; /* Slightly increased letter-spacing for an upscale look */
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2); /* Soft glow to make it pop */
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-logo h1:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+.navbar-links ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links a {
+  color: #FFFFFF; /* White text */
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; /* Smoother transitions */
+  padding: 10px 15px;
+  border-radius: 10px; /* Softer, more luxurious rounded corners */
+  box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.2); /* Subtle shadow effect */
+}
+
+.navbar-links a:hover {
+  color: #9B51E0; /* Neon Purple on hover */
+  background-color: rgba(255, 255, 255, 0.15); /* Slight white overlay effect */
+  transform: translateY(-5px); /* More noticeable lift on hover */
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2); /* Inner glow effect on hover */
+}
+
+.navbar-links a:active {
+  transform: translateY(0); /* Reset lift effect on click */
+  box-shadow: none; /* Remove shadow on click */
+}
+
+@media (max-width: 768px) {
   .navbar-logo h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 24px; /* Adjusted for smaller screens */
   }
-  
+
   .navbar-links ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
+    flex-direction: column;
+    gap: 15px;
   }
-  
+
   .navbar-links a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    padding: 8px 10px;
   }
-  
-  .navbar-links a:hover {
-    color: #0056b3;
-  }
-  
+}
