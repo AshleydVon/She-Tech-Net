@@ -13,7 +13,7 @@ function WelcomePage() {
         <div className="welcome-text">
           <h1>Welcome to SHE-TECH-NET</h1>
           <p>
-            Join our community and explore opportunities designed to empower women in tech. Discover courses, events, jobs, and mentorship tailored just for you.
+          Unlock your potential with SHE-TECH-NET, a thriving community dedicated to uplifting and empowering women in technology. Dive into expertly crafted courses, exclusive events, exciting career opportunities, and personalized mentorship that are all designed to support and elevate your journey in tech. Join us and start building the future today.
           </p>
         </div>
 
