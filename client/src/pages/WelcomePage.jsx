@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import '../styles/Welcomepage.css'
-import Navbar from '../components/Navbar'; 
+// import Navbar from '../components/Navbar'; 
 
 function WelcomePage() {
   return (
     <>
       {/* Simple Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Welcome content aligned with mockup design */}
       <div className="welcome-container mockup-style">
         <div className="welcome-text">
-          <h1>Welcome to SHE-TECH-IN</h1>
+          <h1>Welcome to SHE-TECH-NET</h1>
           <p>
             Join our community and explore opportunities designed to empower women in tech. Discover courses, events, jobs, and mentorship tailored just for you.
           </p>

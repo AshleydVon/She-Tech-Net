@@ -1,11 +1,11 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Navbar from '../components/Navbar';
+// import Footer from '../components/Footer';
 import '../styles/mainpages.css';
 
 function JobsPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="jobs-page">
         <section className="content">
           <h1>Jobs</h1>
@@ -18,7 +18,7 @@ function JobsPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

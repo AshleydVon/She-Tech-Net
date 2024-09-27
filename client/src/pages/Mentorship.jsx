@@ -5,7 +5,7 @@ import '../styles/mainpages.css';
 function MentorshipPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="mentorship-page">
         <section className="content">
           <h1>Mentorship</h1>
@@ -19,7 +19,7 @@ function MentorshipPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
