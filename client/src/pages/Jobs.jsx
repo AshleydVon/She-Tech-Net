@@ -1,5 +1,5 @@
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
+
+
 import '../styles/mainpages.css';
 
 function JobsPage() {
