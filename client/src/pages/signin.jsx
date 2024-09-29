@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN_USER } from '../utils/mutations';  // Assuming LOGIN_USER mutation exists in SHE-TECH-IN
-import Auth from '../utils/auth';  // Authentication service
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
-function SignIn() {  // Changed to SignIn for SHE-TECH-IN
+function SignIn() {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [loginUser, { error }] = useMutation(LOGIN_USER);  // Using LOGIN_USER for SHE-TECH-IN
+  const [loginUser, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ function SignIn() {  // Changed to SignIn for SHE-TECH-IN
         variables: { email: formState.email, password: formState.password },
       });
       const token = data.login.token;
-      Auth.login(token);  // Handle login with Auth service
+      Auth.login(token);
     } catch (err) {
       console.error(err);
     }
@@ -64,7 +64,8 @@ function SignIn() {  // Changed to SignIn for SHE-TECH-IN
         </div>
       </form>
 
-      <p>Don’t have an account? <Link to="/signup">Sign Up</Link></p> {/* Link to SignUp page */}
+      {/* Ensure correct route for SignUp */}
+      <p>Don’t have an account? <Link to="/signup">Sign Up</Link></p>
     </div>
   );
 }

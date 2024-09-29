@@ -8,14 +8,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { StoreProvider } from './utils/GlobalState'; // Import the corrected StoreProvider
+import { StoreProvider } from './utils/GlobalState';
 
-// Set up HTTP link for Apollo Client (connecting to your GraphQL API)
 const httpLink = createHttpLink({
-  uri: '/graphql',  // Adjust this URI based on your backend endpoint
+  uri: '/graphql',
 });
 
-// Set up Authorization link to add the token to headers
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -26,7 +24,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-// Initialize Apollo Client with cache and authLink
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -35,9 +32,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider> {/* Make sure you're using StoreProvider */}
+      <StoreProvider>
         <Navbar />
-        <Outlet />  {/* This will render the child routes based on your main.jsx router */}
+        <Outlet />
         <Footer />
       </StoreProvider>
     </ApolloProvider>
