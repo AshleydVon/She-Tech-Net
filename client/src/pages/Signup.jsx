@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';  // Authentication service for login
-import { ADD_USER } from '../utils/mutations';  // Using the ADD_USER mutation
+import Auth from '../utils/auth';  
+import { ADD_USER } from '../utils/mutations';  
 
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '' });
@@ -20,7 +20,7 @@ function Signup() {
         },
       });
       const token = data.addUser.token;
-      Auth.login(token);  // Log in the user after sign-up
+      Auth.login(token);
     } catch (e) {
       console.error(e);
     }
@@ -36,7 +36,7 @@ function Signup() {
 
   return (
     <div className="container my-1">
-      <Link to="/signin">← Go to Sign In</Link>  {/* Link to Sign In page */}
+      <Link to="/signin">← Go to Sign In</Link>
 
       <h2>Sign Up</h2>
       <form onSubmit={handleFormSubmit}>
