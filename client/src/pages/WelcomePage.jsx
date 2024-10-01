@@ -21,6 +21,7 @@ function WelcomePage() {
         <div className="auth-buttons mockup-style">
           <Link to="/signup" className="btn signup-btn">Sign Up</Link>
           <Link to="/signin" className="btn signin-btn">Sign In</Link>
+          
         </div>
       </div>
     </>

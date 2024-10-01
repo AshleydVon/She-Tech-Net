@@ -19,6 +19,9 @@ function Navbar() {
           <li className="mx-1">
             <Link to="/jobs">Jobs</Link>
           </li>
+          <li className="mx-1">
+            <Link to="/logout">Logout</Link>
+          </li>
         </ul>
       );
     }
@@ -31,7 +34,7 @@ function Navbar() {
         {/* Left side: Logo or Name */}
         <div className="navbar-logo">
           <h1>
-            <Link to="/">SHE-TECH-IN</Link>
+            <Link to="/">SHE-TECH-NET</Link>
           </h1>
         </div>
 
