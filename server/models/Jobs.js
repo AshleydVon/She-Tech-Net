@@ -1,38 +1,35 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const jobsSchema = new Schema({
-company: {  
+const jobSchema = new mongoose.Schema({
+  company: {
     type: String,
     required: true,
-    trim: true
-},
-position: {
+  },
+  position: {
     type: String,
     required: true,
-    trim: true
-},
-description: {
+  },
+  description: {
     type: String,
     required: true,
-    trim: true
-},  
-applicationLink: {    
+  },
+  applicationLink: {
     type: String,
     required: true,
-    trim: true
-},
-postedDate: {
-    type: Date,
-    default: Date.now 
-},
-isWomenFriendly: {
+  },
+  postedDate: {
+    type: String,
+    required: true,
+  },
+  isWomenFriendly: {
     type: Boolean,
-    default: false
-},
+    required: true,
+  },
+  applicants: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
 });
 
-const Jobs = mongoose.model('Job', jobsSchema);
-
-module.exports = Jobs;
+const Job = mongoose.model('Job', jobSchema);
+module.exports = Job;
