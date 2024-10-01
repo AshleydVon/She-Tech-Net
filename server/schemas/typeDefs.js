@@ -1,13 +1,17 @@
 const typeDefs = `
+  enum UserRole {
+    STUDENT
+    ADMIN
+  }
+
   type User {
     _id: ID!
     firstName: String!
     lastName: String!
     email: String!
-    role: String!
+    role: UserRole!
     skills: [String]
     bio: String
-    
     profileImage: String
   }
 
@@ -57,25 +61,29 @@ const typeDefs = `
 
   type Query {
     users: [User]
-    courses: [Course]
     mentorships(industry: String, yearsOfExperience: Int): [Mentorship]  
     jobs: [Job]
     events: [Event]
   }
 
+  input UserInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    role: UserRole!
+  }
+
   type Mutation {
-    register(name: String!, email: String!, password: String!, role: String!): Auth
+    signUp(input: UserInput!): Auth
     login(email: String!, password: String!): Auth
-    createCourse(title: String!, description: String!, category: String!, level: String!, content: String!): Course
     createMentorship(expertise: [String]!, availableTimeSlots: [String]!, industry: String, yearsOfExperience: Int): Mentorship  
     createJob(company: String!, position: String!, description: String!, applicationLink: String!, postedDate: String!, isWomenFriendly: Boolean!): Job
     createEvent(title: String!, description: String!, date: String!, registrationLink: String!, tags: [String]): Event
     enrollCourse(courseId: ID!): Course
     enrollEvent(eventId: ID!): Event
     applyJob(jobId: ID!): Job
-    addUser (firstName: String!, lastName: String!, email: String!, password: String!): Auth
-   
-    updateUser(name: String, email: String, role: String, skills: [String], bio: String, profileImage: String): User
+    updateUser(firstName: String, lastName: String, email: String, role: UserRole, skills: [String], bio: String, profileImage: String): User
   }
 `;
 

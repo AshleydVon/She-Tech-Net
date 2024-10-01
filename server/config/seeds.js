@@ -1,6 +1,6 @@
 const axios = require('axios');
 const db = require('./connection');
-const { User, Course, Mentorship, Job, Event } = require('../models');
+const { User, Mentorship, Job, Event } = require('../models');
 const cleanDB = require('./cleanDB');
 
 const API_KEY = '7R99IvcW04F32iBmWGGW2YLQBansXD6ZWynqx9uXnrmLZZMG';
@@ -37,31 +37,6 @@ db.once('open', async () => {
   ]);
 
   console.log('Users seeded');
-
-  try {
-    const { data } = await axios.get('https://api.courseca.com/courses', {
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-        'x-api-secret': API_SECRET,
-      },
-    });
-
-    const courses = data.map((course) => ({
-      title: course.title,
-      description: course.description,
-      category: course.category,
-      level: course.level,
-      content: course.content,
-      author: users[0]._id,
-      enrollments: course.enrollments || 0,
-    }));
-
-    await Course.insertMany(courses);
-    console.log('Courses seeded from Courseca API');
-  } catch (error) {
-    console.error('Error fetching courses from Courseca API:', error);
-  }
-
   const mentorships = await Mentorship.insertMany([
     {
       user: users[0]._id, 
