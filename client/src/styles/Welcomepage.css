@@ -1,15 +1,34 @@
-/* WelcomePage styles */
+/* Variables for colors and gradients */
+:root {
+  --primary-color: #ff69b4; /* Bright pinkish color */
+  --secondary-color: #800080; /* Purple color */
+  --gradient-bg: linear-gradient(135deg, #800080, #ff69b4); /* Purple to Pink gradient */
+  --text-color: #444; /* Updated text color for better readability */
+  --background-color: #fff; /* White background color */
+  --btn-hover-bg: linear-gradient(135deg, #ff69b4, #800080); /* Gradient for button hover effect */
+  --box-shadow-color: rgba(128, 0, 128, 0.3); /* Purple shadow color */
+  --btn-text-color: #fff; /* White text color for buttons */
+}
 
-/* Base (Mobile) Styles */
-body {
+/* Reset and Global Styles */
+* {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #FFFFFF, #FF4ECD); /* Subtle gradient from white to pink for background */
-  color: #1E0036; /* Dark Purple for primary text */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial, sans-serif';
+  background: var(--background-color);
+  color: var(--text-color);
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Welcome Container */
 .welcome-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,17 +37,24 @@ body {
   padding: 20px;
   text-align: center;
   backdrop-filter: blur(15px); /* Glassmorphism effect for added depth */
-  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  background: white; /* Semi-transparent background */
   border-radius: 20px; /* Soft, rounded corners */
   box-shadow: 0 8px 32px rgba(155, 81, 224, 0.2); /* Soft shadow for depth */
 }
 
+/* Welcome Text */
+.welcome-text {
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in animation for welcome text */
+}
+
 .welcome-text h1 {
-  font-size: 2.5rem; /* Slightly larger for emphasis on mobile */
+  font-size: 1.8rem; /* Slightly reduced for better fit */
   color: #FF4ECD; /* Pink for the main title */
   margin-bottom: 20px;
   text-transform: uppercase; /* Makes the main title more impactful */
   letter-spacing: 2px; /* Adds sophistication */
+  margin-top: 60px; /* Added margin to prevent overlap with navbar */
 }
 
 .welcome-text p {
@@ -37,8 +63,22 @@ body {
   max-width: 350px;
   margin-bottom: 30px;
   color: #1E0036; /* Dark Purple for paragraph text */
+  animation: fadeIn 2s ease-in-out; /* Added fade-in animation for paragraph */
 }
 
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Auth Buttons */
 .auth-buttons {
   display: flex;
   flex-direction: column;
@@ -101,13 +141,13 @@ p a:hover {
 
   .welcome-container {
     padding: 40px;
-    max-width: 800px; /* Larger container for desktop */
-    border-radius: 30px; /* Slightly more rounded corners for a premium feel */
+    width: 100%; /* Larger container for desktop */
   }
 
   .welcome-text h1 {
-    font-size: 4rem; /* Larger font size for desktop */
+    font-size: 2.5rem; /* Slightly reduced font size for desktop */
     margin-bottom: 30px;
+    margin-top: 80px; /* Increased margin to prevent overlap with navbar */
   }
 
   .welcome-text p {

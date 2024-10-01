@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN_USER } from '../utils/mutations';  // Assuming LOGIN_USER mutation exists in SHE-TECH-IN
+import { LOGIN_USER } from '../utils/mutations';   
 import Auth from '../utils/auth';  // Authentication service
 import '../styles/signin.css';
 

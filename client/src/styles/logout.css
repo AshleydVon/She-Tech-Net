@@ -1,0 +1,102 @@
+/* General Page Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1E0036; /* Dark Purple background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Logout Container */
+  .logout-container {
+    background: linear-gradient(135deg, #800080, #ff69b4); /* Purple to Pink gradient */
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .logout-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+  
+  /* Logout Buttons Container */
+  .logout-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* Button Styling */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .logout-btn {
+    background-color: #FF4ECD; /* Pink for Log Out button */
+    color: #ffffff;
+  }
+  
+  .logout-btn:hover {
+    background-color: #9B51E0; /* Neon Purple on hover */
+    box-shadow: 0px 8px 15px rgba(155, 81, 224, 0.5); /* Glow effect */
+    transform: translateY(-3px); /* Slight lift */
+  }
+  
+  .cancel-btn {
+    background-color: #4EDFFF; /* Bright Blue for Cancel button */
+    color: #1E0036; /* Dark Purple text for contrast */
+  }
+  
+  .cancel-btn:hover {
+    background-color: #9B51E0; /* Neon Purple on hover */
+    color: #ffffff; /* White text on hover */
+    box-shadow: 0px 8px 15px rgba(155, 81, 224, 0.5); /* Glow effect */
+    transform: translateY(-3px); /* Slight lift */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .logout-container {
+      padding: 2rem 1.5rem;
+    }
+  
+    .logout-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .btn {
+      padding: 0.65rem 1.2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .logout-container {
+      max-width: 500px;
+      padding: 3rem;
+    }
+  
+    .logout-container h2 {
+      font-size: 2rem;
+    }
+  
+    .btn {
+      font-size: 1.1rem;
+    }
+  }
+  
