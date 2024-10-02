@@ -1,62 +1,34 @@
-/* Footer Styles */
+/* General Footer Styling */
 .footer {
-  background: linear-gradient(135deg, #1E0036, #9B51E0); /* Gradient background from Dark Purple to Neon Purple for depth */
-  color: #FFFFFF; /* White text */
-  padding: 40px 0;
+  width: 100rem; /* Full width of the page */
+  margin-top: 30px;
+  background: linear-gradient(135deg, #fffeff, #FF4ECD); /* Gradient background from dark purple to bright pink */
+  color: #FFFFFF; /* White text for contrast */
   text-align: center;
+  padding: 20px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
   position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow above the footer */
-  z-index: 1000;
-  border-top: 2px solid #FF4ECD; /* Pink border for a refined accent */
 }
 
+/* Footer Text Styling */
 .footer p {
-  font-size: 1.2rem;
-  letter-spacing: 1.2px; /* Adds sophistication */
   margin: 0;
-  color: #FF4ECD; /* Pink text for a refined look */
-  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3); /* Subtle glow to the text */
-  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out, color 0.3s ease-in-out; /* Added smooth color transition */
+  font-size: 1rem; /* Base font size */
 }
 
-.footer p:hover {
-  transform: scale(1.05); /* Slight scale on hover */
-  text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.5); /* Stronger glow effect on hover */
-  color: #FFFFFF; /* White text on hover for added emphasis */
-}
-
-/* Social Media Icons */
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.footer-icons a {
-  color: #FFFFFF; /* White for social media icons */
-  font-size: 1.8rem; /* Larger size for emphasis */
-  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scaling */
-}
-
-.footer-icons a:hover {
-  color: #4EDFFF; /* Bright Blue for a pop of color */
-  transform: scale(1.2); /* Slight lift and scale on hover */
-}
-
-/* Media Query for Mobile Devices */
-@media (max-width: 768px) {
+/* Responsive Styling */
+@media (min-width: 768px) {
   .footer {
-    padding: 30px 0; /* Slightly smaller padding for mobile */
+    width: 100rem;
+    padding: 25px;
+    font-size: 1.1rem; /* Slightly larger font size for tablet */
   }
+}
 
-  .footer p {
-    font-size: 1rem;
-  }
-
-  .footer-icons a {
-    font-size: 1.5rem; /* Adjust icon size for smaller screens */
+@media (min-width: 1440px) {
+  .footer {
+    width: 100rem;
+    padding: 30px;
+    font-size: 1.25rem; /* Larger font size for larger screens */
   }
 }
