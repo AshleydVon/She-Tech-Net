@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/logout.css'; // Import the CSS file for styling
+import '../styles/logout.css'; 
 import Auth from '../utils/auth'; // Authentication utility to handle logout
 
 function LogoutPage() {
