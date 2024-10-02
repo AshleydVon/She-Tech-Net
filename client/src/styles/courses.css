@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* White background */
+    background: linear-gradient(135deg, #FFFFFF, #FFC0CB);
     padding: 20px;
     min-height: 100vh;
     font-family: 'Arial, sans-serif';
