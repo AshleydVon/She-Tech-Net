@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';  
-import { ADD_USER } from '../utils/mutations';  
+import { ADD_USER } from '../utils/mutations'; 
+import '../styles/signup.css'; 
 
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '' });
@@ -35,14 +36,15 @@ function Signup() {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signin">← Go to Sign In</Link>
+    <div className="signup-container my-1">
+      <Link to="/signin" className="signup-link">← Go to Sign In</Link>
 
-      <h2>Sign Up</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
+      <h2 className="signup-heading">Sign Up</h2>
+      <form onSubmit={handleFormSubmit} className="signup-form">
+        <div className="signup-flex-row signup-space-between my-2">
+          <label htmlFor="firstName" className="signup-label">First Name:</label>
           <input
+            className="signup-input"
             placeholder="First"
             name="firstName"
             type="text"
@@ -50,9 +52,10 @@ function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
+        <div className="signup-flex-row signup-space-between my-2">
+          <label htmlFor="lastName" className="signup-label">Last Name:</label>
           <input
+            className="signup-input"
             placeholder="Last"
             name="lastName"
             type="text"
@@ -60,9 +63,10 @@ function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
+        <div className="signup-flex-row signup-space-between my-2">
+          <label htmlFor="email" className="signup-label">Email:</label>
           <input
+            className="signup-input"
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -70,9 +74,10 @@ function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+        <div className="signup-flex-row signup-space-between my-2">
+          <label htmlFor="pwd" className="signup-label">Password:</label>
           <input
+            className="signup-input"
             placeholder="******"
             name="password"
             type="password"
@@ -80,8 +85,8 @@ function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+        <div className="signup-flex-row signup-flex-end">
+          <button type="submit" className="signup-button">Submit</button>
         </div>
       </form>
     </div>

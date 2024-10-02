@@ -11,6 +11,7 @@ import MentorshipPage from './pages/Mentorship';
 import CoursesPage from './pages/Courses';
 import EventsPage from './pages/Events';
 import JobsPage from './pages/Jobs';
+import LogoutPage from './pages/LogoutPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: 'jobs',
         element: <JobsPage />
+      },
+      {
+        path: 'logout',
+        element: <LogoutPage />
       }
     ]
   }

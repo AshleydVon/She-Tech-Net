@@ -1,214 +1,131 @@
-/* General Body Styling */
+/* SignIn Page Styles */
+
+/* Base (Mobile) Styles */
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #FFFFFF, #FF4ECD);
-  color: #1E0036;
-  overflow-x: hidden;
-}
-
-/* Main Container */
-.welcome-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(155, 81, 224, 0.2);
-}
-
-/* Main Hero Section */
-.welcome-text {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.welcome-text h1 {
-  font-size: 3.5rem;
-  color: #FF4ECD;
-}
-
-.welcome-text p {
-  font-size: 1.2rem;
-  color: #1E0036;
-  max-width: 600px;
-}
-
-.auth-buttons {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.auth-buttons .btn {
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.signup-btn {
-  background: linear-gradient(90deg, #4EDFFF, #1E0036);
-  color: #FFFFFF;
-}
-
-.signup-btn:hover {
-  background: linear-gradient(90deg, #9B51E0, #4EDFFF);
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 16px rgba(155, 81, 224, 0.5);
-}
-
-.signin-btn {
-  background: linear-gradient(90deg, #FF4ECD, #1E0036);
-  color: #FFFFFF;
-}
-
-.signin-btn:hover {
-  background: linear-gradient(90deg, #9B51E0, #FF4ECD);
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 16px rgba(155, 81, 224, 0.5);
-}
-
-/* About Section */
-.about-section {
-  text-align: center;
-  margin: 50px 0;
-}
-
-.about-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.about-section p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-/* Features Section */
-.features-section {
-  text-align: center;
-  margin: 50px 0;
-}
-
-.features-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-}
-
-.features-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.feature-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 250px;
-  text-align: center;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #FF4ECD;
-}
-
-.feature-card p {
-  font-size: 1rem;
-  color: #1E0036;
-}
-
-/* Team Section */
-.team-section {
-  text-align: center;
-  margin: 50px 0;
-}
-
-.team-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-}
-
-.team-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.team-member {
-  text-align: center;
-}
-
-.team-member img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.team-member img:hover {
-  transform: scale(1.05);
-}
-
-.team-member h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.team-member p {
-  font-size: 1rem;
-  color: #1E0036;
-}
-
-.team-member a {
-  color: #FF4ECD;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.team-member a:hover {
-  text-decoration: underline;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .welcome-container {
-    padding: 20px;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #FFFFFF, #FF4ECD); /* Subtle gradient from white to pink */
+    color: #1E0036; /* Dark Purple for primary text */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
   
-  .auth-buttons {
-    flex-direction: column;
-    gap: 10px;
+  .container {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for a glass-like effect */
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 32px rgba(155, 81, 224, 0.2); /* Soft shadow for added depth */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    text-align: center;
   }
   
-  .features-grid,
-  .team-grid {
-    flex-direction: column;
-    gap: 20px;
+  h2 {
+    font-size: 2rem;
+    color: #FF4ECD; /* Pink for the main title */
+    margin-bottom: 25px;
+    text-transform: uppercase; /* Make the title impactful */
+    letter-spacing: 1px;
   }
   
-  .feature-card,
-  .team-member {
-    max-width: 90%; /* Allow for better responsiveness */
+  .form-group {
+    margin-bottom: 20px;
   }
   
-  .welcome-text h1 {
-    font-size: 2.5rem; /* Adjust font size for smaller screens */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #1E0036; /* Dark Purple for labels */
+    font-weight: bold;
+    text-align: left;
   }
-
-  .welcome-text p {
-    font-size: 1rem; /* Adjust font size for smaller screens */
+  
+  .form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #4EDFFF; /* Bright Blue border */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5); /* Light transparent background for a clean look */
+    color: #1E0036; /* Dark Purple text inside input fields */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-}
+  
+  .form-input:focus {
+    border-color: #FF4ECD; /* Pink for focused input */
+    box-shadow: 0 0 10px rgba(255, 78, 205, 0.4); /* Pink glow for focused state */
+    outline: none;
+  }
+  
+  .btn {
+    background: linear-gradient(90deg, #FF4ECD, #4EDFFF); /* Gradient from Pink to Bright Blue */
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    color: #FFFFFF; /* White text for contrast */
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Full width for mobile */
+    margin-top: 15px;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(90deg, #9B51E0, #FF4ECD); /* Gradient to Neon Purple */
+    box-shadow: 0px 8px 25px rgba(155, 81, 224, 0.5); /* Soft Neon Purple glow */
+    transform: translateY(-3px); /* Lift effect for added interaction */
+  }
+  
+  .error-text {
+    color: #FF4ECD; /* Pink for error messages */
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #1E0036; /* Dark Purple for the paragraph */
+  }
+  
+  p a {
+    color: #FF4ECD; /* Pink for sign-up link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  p a:hover {
+    color: #9B51E0; /* Neon Purple on hover */
+    text-decoration: underline;
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    body {
+      background: linear-gradient(135deg, #FFFFFF, #9B51E0); /* Gradient for desktop background */
+    }
+  
+    .container {
+      padding: 40px;
+      max-width: 500px; /* Larger container for desktop */
+      border-radius: 30px; /* More rounded corners for a premium look */
+    }
+  
+    h2 {
+      font-size: 2.5rem; /* Larger font size for desktop */
+      margin-bottom: 30px;
+    }
+  
+    .btn {
+      max-width: 200px; /* Adjusted width for desktop */
+      padding: 15px 35px;
+    }
+  }
+  
