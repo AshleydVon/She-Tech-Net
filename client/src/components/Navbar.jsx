@@ -3,6 +3,10 @@ import Auth from '../utils/auth';
 import '../styles/Navbar.css';
 
 function Navbar() {
+  function handleLogout() {
+    Auth.logout(); // Call the logout function to clear the token and redirect
+  }
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -20,7 +24,7 @@ function Navbar() {
             <Link to="/jobs">Jobs</Link>
           </li>
           <li className="mx-1">
-            <Link to="/logout">Logout</Link>
+            <button onClick={handleLogout}>Logout</button> {/* Changed from Link to button */}
           </li>
         </ul>
       );
@@ -31,14 +35,11 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-container flex-row">
-        {/* Left side: Logo or Name */}
         <div className="navbar-logo">
           <h1>
             <Link to="/">SHE-TECH-NET</Link>
           </h1>
         </div>
-
-        {/* Right side: Links */}
         <nav className="navbar-links-container">
           {showNavigation()}
         </nav>

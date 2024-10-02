@@ -4,7 +4,7 @@ import '../styles/Welcomepage.css';
 function WelcomePage() {
   return (
     <>
-      <div className="welcome-container">
+      {/* <div className="welcome-container">
         <div className="welcome-text">
           <h1>Welcome to SHE-TECH-NET</h1>
           <p>
@@ -15,7 +15,7 @@ function WelcomePage() {
             <Link to="/signup" className="btn signup-btn">Sign Up</Link>
             <Link to="/signin" className="btn signin-btn">Sign In</Link>
           </div>
-        </div>
+        </div> */}
 
         <section className="about-section">
           <h2>Why SHE-TECH-NET?</h2>
@@ -45,6 +45,19 @@ function WelcomePage() {
             </div>
           </div>
         </section>
+
+        <div className="welcome-container">
+        <div className="welcome-text">
+          <h1>Welcome to SHE-TECH-NET</h1>
+          <p>
+            Unlock your potential with SHE-TECH-NET, a thriving community
+            dedicated to uplifting and empowering women in technology. Dive into expertly crafted courses, exclusive events, career opportunities, and personalized mentorship to support your journey in tech. Join us and start building your future today!
+          </p>
+          <div className="auth-buttons">
+            <Link to="/signup" className="btn signup-btn">Sign Up</Link>
+            <Link to="/signin" className="btn signin-btn">Sign In</Link>
+          </div>
+        </div>
 
         <section className="team-section">
           <h2>Meet the Team</h2>

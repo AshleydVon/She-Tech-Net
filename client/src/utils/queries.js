@@ -34,7 +34,7 @@ export const QUERY_MENTORSHIPS = gql`
 `;
 
 export const QUERY_JOBS = gql`
-  query getJobs {
+  query Jobs {
     jobs {
       _id
       company
@@ -48,7 +48,7 @@ export const QUERY_JOBS = gql`
 `;
 
 export const QUERY_EVENTS = gql`
-  query getEvents {
+  query Events {
     events {
       _id
       title

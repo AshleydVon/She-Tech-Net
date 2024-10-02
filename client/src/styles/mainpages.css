@@ -131,3 +131,24 @@ body {
     padding: 20px;
   }
 }
+.event-listings {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.event-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h3 {
+  margin: 0;
+  color: #FF4ECD;
+}
+
+.event-card p {
+  margin: 5px 0;
+}
