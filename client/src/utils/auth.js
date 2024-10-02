@@ -28,10 +28,10 @@ class AuthService {
     window.location.assign('/Home');
   }
 
-  // logout() {
-  //   localStorage.removeItem('id_token');
-  //   window.location.assign('/');
-  // }
+  logout() {
+    localStorage.removeItem('id_token');
+    window.location.assign('../pages/WelcomePage.jsx');
+  }
 }
 
 export default new AuthService();

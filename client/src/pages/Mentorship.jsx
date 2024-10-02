@@ -1,25 +1,30 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import '../styles/mentorships.css';
+import { useQuery } from '@apollo/client';
+import { QUERY_MENTORSHIPS } from '../utils/queries';
+import '../styles/mainpages.css';
 
 function MentorshipPage() {
+  const { loading, error, data } = useQuery(QUERY_MENTORSHIPS);
+
+  if (loading) return <p>Loading mentorships...</p>;
+  if (error) return <p>Error fetching mentorships: {error.message}</p>;
+
   return (
     <>
-      {/* <Navbar /> */}
       <main className="mentorship-page">
         <section className="content">
           <h1>Mentorship</h1>
-          <div className="description">
-            {/* Add the mockup-based layout here */}
-            <p>Explore mentorship opportunities tailored to support women in tech.</p>
-          </div>
-          {/* Placeholder for mentorship listings */}
           <div className="mentorship-listings">
-            {/* Add mockup-style placeholders or logic */}
+            {data.mentorships.map((mentorship) => (
+              <div key={mentorship._id} className="mentorship-card">
+                <h2>{mentorship.expertise} Mentorship</h2>
+                <p>Industry: {mentorship.industry}</p>
+                <p>Years of Experience: {mentorship.yearsOfExperience}</p>
+                <p>Available Time Slots: {mentorship.availableTimeSlots.join(', ')}</p>
+              </div>
+            ))}
           </div>
         </section>
       </main>
-      {/* <Footer /> */}
     </>
   );
 }
