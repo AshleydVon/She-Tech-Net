@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'; 
 import '../styles/Navbar.css';
+import logo from "../assets/logo.png"
 
 function Navbar() {
   function showNavigation() {
@@ -32,7 +33,7 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-container flex-row">
         {/* Left side: Logo or Name */}
-        <div className="navbar-logo">
+        <img src= {logo}  alt="My Photo" className="avatar" width = '50px' height='350px'/> 
           <h1>
             <Link to="/">SHE-TECH-NET</Link>
           </h1>
@@ -42,7 +43,7 @@ function Navbar() {
         <nav className="navbar-links-container">
           {showNavigation()}
         </nav>
-      </div>
+     
     </header>
   );
 }
