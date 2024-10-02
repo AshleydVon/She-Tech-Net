@@ -1,169 +1,131 @@
-/* Variables for colors and gradients */
-:root {
-  --primary-color: #ff69b4; /* Bright pinkish color */
-  --secondary-color: #800080; /* Purple color */
-  --gradient-bg: linear-gradient(135deg, #800080, #ff69b4); /* Purple to Pink gradient */
-  --text-color: #444; /* Updated text color for better readability */
-  --background-color: #fff; /* White background color */
-  --btn-hover-bg: linear-gradient(135deg, #ff69b4, #800080); /* Gradient for button hover effect */
-  --box-shadow-color: rgba(128, 0, 128, 0.3); /* Purple shadow color */
-  --btn-text-color: #fff; /* White text color for buttons */
-}
+/* SignIn Page Styles */
 
-/* Reset and Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  width: 100%;
-  font-family: 'Arial, sans-serif';
-  background: var(--background-color);
-  color: var(--text-color);
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Welcome Container */
-.welcome-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-  backdrop-filter: blur(15px); /* Glassmorphism effect for added depth */
-  background: white; /* Semi-transparent background */
-  border-radius: 20px; /* Soft, rounded corners */
-  box-shadow: 0 8px 32px rgba(155, 81, 224, 0.2); /* Soft shadow for depth */
-}
-
-/* Welcome Text */
-.welcome-text {
-  margin-bottom: 2rem;
-  animation: fadeIn 1.5s ease-in-out; /* Fade-in animation for welcome text */
-}
-
-.welcome-text h1 {
-  font-size: 1.8rem; /* Slightly reduced for better fit */
-  color: #FF4ECD; /* Pink for the main title */
-  margin-bottom: 20px;
-  text-transform: uppercase; /* Makes the main title more impactful */
-  letter-spacing: 2px; /* Adds sophistication */
-  margin-top: 60px; /* Added margin to prevent overlap with navbar */
-}
-
-.welcome-text p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 350px;
-  margin-bottom: 30px;
-  color: #1E0036; /* Dark Purple for paragraph text */
-  animation: fadeIn 2s ease-in-out; /* Added fade-in animation for paragraph */
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
+/* Base (Mobile) Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #FFFFFF, #FF4ECD); /* Subtle gradient from white to pink */
+    color: #1E0036; /* Dark Purple for primary text */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .container {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for a glass-like effect */
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 32px rgba(155, 81, 224, 0.2); /* Soft shadow for added depth */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    text-align: center;
   }
-}
-
-/* Auth Buttons */
-.auth-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.auth-buttons .btn {
-  padding: 14px 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 30px; /* Rounded for friendly design */
-  cursor: pointer;
-  width: 100%; /* Full-width buttons on mobile */
-  max-width: 300px;
-  margin: 0 auto;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.signup-btn {
-  background: linear-gradient(90deg, #4EDFFF, #1E0036); /* Gradient from Bright Blue to Dark Purple */
-  color: #FFFFFF; /* White text for contrast */
-}
-
-.signup-btn:hover {
-  background: linear-gradient(90deg, #9B51E0, #4EDFFF); /* Gradient from Neon Purple to Bright Blue */
-  box-shadow: 0px 8px 25px rgba(155, 81, 224, 0.5); /* Soft Neon Purple glow */
-  transform: translateY(-3px); /* Lift effect */
-}
-
-.signin-btn {
-  background: linear-gradient(90deg, #FF4ECD, #1E0036); /* Gradient from Pink to Dark Purple */
-  color: #FFFFFF; /* White text for contrast */
-}
-
-.signin-btn:hover {
-  background: linear-gradient(90deg, #9B51E0, #FF4ECD); /* Gradient from Neon Purple to Pink */
-  box-shadow: 0px 8px 25px rgba(155, 81, 224, 0.5); /* Soft Neon Purple glow */
-  transform: translateY(-3px); /* Lift effect */
-}
-
-p a {
-  color: #FF4ECD; /* Pink for sign-up link */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-p a:hover {
-  color: #9B51E0; /* Neon Purple on hover */
-  text-decoration: underline;
-}
-
-/* Desktop Styles */
-@media (min-width: 768px) {
-  body {
-    background: linear-gradient(135deg, #FFFFFF, #9B51E0); /* Gradient from white to Neon Purple for a vibrant look */
+  
+  h2 {
+    font-size: 2rem;
+    color: #FF4ECD; /* Pink for the main title */
+    margin-bottom: 25px;
+    text-transform: uppercase; /* Make the title impactful */
+    letter-spacing: 1px;
   }
-
-  .welcome-container {
-    padding: 40px;
-    width: 100%; /* Larger container for desktop */
+  
+  .form-group {
+    margin-bottom: 20px;
   }
-
-  .welcome-text h1 {
-    font-size: 2.5rem; /* Slightly reduced font size for desktop */
-    margin-bottom: 30px;
-    margin-top: 80px; /* Increased margin to prevent overlap with navbar */
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #1E0036; /* Dark Purple for labels */
+    font-weight: bold;
+    text-align: left;
   }
-
-  .welcome-text p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 700px; /* More room for text on larger screens */
+  
+  .form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #4EDFFF; /* Bright Blue border */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5); /* Light transparent background for a clean look */
+    color: #1E0036; /* Dark Purple text inside input fields */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-
-  .auth-buttons {
-    flex-direction: row; /* Arrange buttons side by side on larger screens */
-    gap: 25px;
-    margin-top: 40px;
+  
+  .form-input:focus {
+    border-color: #FF4ECD; /* Pink for focused input */
+    box-shadow: 0 0 10px rgba(255, 78, 205, 0.4); /* Pink glow for focused state */
+    outline: none;
   }
-
-  .auth-buttons .btn {
-    max-width: none; /* Remove width limit for desktop */
-    padding: 18px 40px; /* Larger buttons for more emphasis */
+  
+  .btn {
+    background: linear-gradient(90deg, #FF4ECD, #4EDFFF); /* Gradient from Pink to Bright Blue */
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    color: #FFFFFF; /* White text for contrast */
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Full width for mobile */
+    margin-top: 15px;
   }
-}
+  
+  .btn:hover {
+    background: linear-gradient(90deg, #9B51E0, #FF4ECD); /* Gradient to Neon Purple */
+    box-shadow: 0px 8px 25px rgba(155, 81, 224, 0.5); /* Soft Neon Purple glow */
+    transform: translateY(-3px); /* Lift effect for added interaction */
+  }
+  
+  .error-text {
+    color: #FF4ECD; /* Pink for error messages */
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #1E0036; /* Dark Purple for the paragraph */
+  }
+  
+  p a {
+    color: #FF4ECD; /* Pink for sign-up link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  p a:hover {
+    color: #9B51E0; /* Neon Purple on hover */
+    text-decoration: underline;
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    body {
+      background: linear-gradient(135deg, #FFFFFF, #9B51E0); /* Gradient for desktop background */
+    }
+  
+    .container {
+      padding: 40px;
+      max-width: 500px; /* Larger container for desktop */
+      border-radius: 30px; /* More rounded corners for a premium look */
+    }
+  
+    h2 {
+      font-size: 2.5rem; /* Larger font size for desktop */
+      margin-bottom: 30px;
+    }
+  
+    .btn {
+      max-width: 200px; /* Adjusted width for desktop */
+      padding: 15px 35px;
+    }
+  }
+  
