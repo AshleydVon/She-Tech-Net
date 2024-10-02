@@ -1,7 +1,7 @@
 /* Footer Styles */
 .footer {
-  background: var(--gradient-bg); /* Using the same purple to pink gradient as the navbar */
-  color: var(--btn-text-color); /* White text color for consistency */
+  background: linear-gradient(135deg, #1E0036, #9B51E0); /* Gradient background from Dark Purple to Neon Purple for depth */
+  color: #FFFFFF; /* White text */
   padding: 40px 0;
   text-align: center;
   position: relative;
@@ -9,15 +9,14 @@
   width: 100%;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow above the footer */
   z-index: 1000;
-  border-top: 2px solid #ff69b4; /* Pink border for a refined accent */
+  border-top: 2px solid #FF4ECD; /* Pink border for a refined accent */
 }
 
-/* Footer Paragraph */
 .footer p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 1.2px; /* Adds sophistication */
   margin: 0;
-  color: #ff69b4; /* Bright pink text for a refined look */
+  color: #FF4ECD; /* Pink text for a refined look */
   text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3); /* Subtle glow to the text */
   transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out, color 0.3s ease-in-out; /* Added smooth color transition */
 }
@@ -47,7 +46,7 @@
   transform: scale(1.2); /* Slight lift and scale on hover */
 }
 
-/* Mobile Devices - Responsive Styling */
+/* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   .footer {
     padding: 30px 0; /* Slightly smaller padding for mobile */
@@ -61,4 +60,3 @@
     font-size: 1.5rem; /* Adjust icon size for smaller screens */
   }
 }
-

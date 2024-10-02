@@ -24,7 +24,7 @@ function WelcomePage() {
           </p>
         </section>
 
-        {/* <section className="features-section">
+        <section className="features-section">
           <h2>What We Offer</h2>
           <div className="features-grid">
             <div className="feature-card">
@@ -44,7 +44,7 @@ function WelcomePage() {
               <p>Get matched with mentors who can guide you through your professional journey.</p>
             </div>
           </div>
-        </section> */}
+        </section>
 
         <section className="team-section">
           <h2>Meet the Team</h2>
