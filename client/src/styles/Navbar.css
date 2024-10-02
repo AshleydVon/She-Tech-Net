@@ -1,126 +1,100 @@
-/* Variables for colors and gradients */
-:root {
-  --primary-color: #ff69b4; /* Bright pinkish color */
-  --secondary-color: #800080; /* Purple color */
-  --gradient-bg: linear-gradient(135deg, #800080, #ff69b4); /* Purple to Pink gradient */
-  --text-color: #fff;
-  --hover-color: rgba(255, 255, 255, 0.8);
-  --navbar-bg: var(--gradient-bg); /* Use the same gradient as the grid boxes */
-}
-
-/* Reset and Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial, sans-serif';
-  background-color: #fff;
-  color: var(--text-color);
-}
-
-/* Navbar Styles: Mobile-First */
+/* General Navbar Styling */
 .navbar {
-  width: 100%;
-  background: var(--navbar-bg); /* Updated to use the gradient background */
-  color: var(--text-color);
-  padding: 1rem;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10; /* Ensure the navbar is above other content */
-}
-
-.navbar-container {
+  width: 60rem;
+  background: linear-gradient(135deg, #FFFFFF, #FFC0CB); /* Gradient from white to light pink */
+  color: #1E0036; /* Dark Purple for text */
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure navbar is on top */
 }
 
-.navbar-logo h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.navbar-logo a {
-  text-decoration: none;
-  color: var(--text-color);
-  transition: color 0.3s ease;
-}
-
-.navbar-logo a:hover {
-  color: var(--hover-color);
-}
-
-/* Navbar Links: Mobile */
-.navbar-links-container {
-  display: none; /* Initially hidden for mobile */
-}
-
-.navbar-links {
-  list-style-type: none;
+/* Navbar Container */
+.navbar-container {
   display: flex;
-  flex-direction: column; /* Stack links vertically on mobile */
-  gap: 1rem;
+  align-items: center;
+}
+
+/* Logo Styling */
+.avatar {
+  margin-right: 15px;
+  border-radius: 50%; /* Make the logo circular */
+  width: 50px;
+  height: 50px;
+}
+
+/* Navbar Title */
+.navbar-container h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #1E0036; /* Dark Purple for primary text */
+}
+
+/* Navbar Links Container */
+.navbar-links-container {
+  display: none; /* Hide links by default for mobile */
+}
+
+/* Navbar Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
 
 .navbar-links li {
-  margin: 0;
+  font-size: 1rem;
 }
 
 .navbar-links a {
+  color: #1E0036; /* Dark Purple for links */
   text-decoration: none;
-  color: var(--text-color);
   font-weight: bold;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .navbar-links a:hover {
-  background: var(--hover-color);
-  transform: translateY(-3px);
+  color: #FF4ECD; /* Pink on hover */
 }
 
-/* Media Query for Tablet and Up (600px) */
-@media (min-width: 600px) {
+/* Mobile Hamburger Menu */
+.navbar-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .navbar-links-container {
-    display: flex; /* Show the navbar links container */
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: linear-gradient(135deg, #FFFFFF, #FFC0CB);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    display: none; /* Initially hidden */
   }
 
   .navbar-links {
-    flex-direction: row; /* Arrange links in a row */
-    gap: 1.5rem; /* Add more space between links */
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .navbar-logo h1 {
-    font-size: 1.8rem;
-  }
-}
-
-/* Media Query for Desktop and Up (1024px) */
-@media (min-width: 1024px) {
-  .navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .navbar-toggle {
+    display: block;
   }
 
-  .navbar {
-    padding: 1rem 2rem; /* More padding for desktop */
-  }
-
-  .navbar-logo h1 {
-    font-size: 2rem;
-  }
-
-  .navbar-links a {
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem; /* More padding for desktop */
+  .navbar-links-container.open {
+    display: block; /* Show the navbar links when menu is toggled */
   }
 }
