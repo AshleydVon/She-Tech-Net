@@ -1,6 +1,6 @@
 
 
-import '../styles/mainpages.css';
+import '../styles/jobs.css';
 
 function JobsPage() {
   return (

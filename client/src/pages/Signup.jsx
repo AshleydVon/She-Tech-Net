@@ -20,6 +20,7 @@ function Signup() {
           lastName: formState.lastName,
         },
       });
+      console.log(data);
       const token = data.addUser.token;
       Auth.login(token);
     } catch (e) {
