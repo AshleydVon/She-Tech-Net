@@ -1,5 +1,5 @@
 
-import '../styles/mainpages.css';
+import '../styles/courses.css';
 
 function CoursesPage() {
   return (

@@ -1,5 +1,5 @@
 
-import '../styles/mainpages.css';
+import '../styles/events.css';
 
 function EventsPage() {
   return (

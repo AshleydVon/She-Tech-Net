@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../styles/mainpages.css';
+import '../styles/mentorships.css';
 
 function MentorshipPage() {
   return (

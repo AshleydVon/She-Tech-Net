@@ -67,3 +67,19 @@ body {
     font-size: 2rem; /* Larger text for desktop */
   }
 }
+
+/* Media Queries for Large Screens */
+@media (min-width: 1440px) {
+  .home-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns with more space between for large screens */
+    grid-gap: 3.5rem;
+  }
+
+  .grid-item {
+    padding: 3.5rem;
+  }
+
+  .grid-item h2 {
+    font-size: 2.25rem;
+  }
+}

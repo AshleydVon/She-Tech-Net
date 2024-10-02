@@ -1,0 +1,188 @@
+/* mainpages.css */
+
+/* Mobile-First General Page Styling */
+.mentorship-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    min-height: 100vh;
+    font-family: 'Arial, sans-serif';
+  }
+  
+  /* Mobile-First Content Section Styling */
+  .content {
+    width: 100%;
+    text-align: center;
+    background-color: #ffeff5; /* Light pink background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading Styling */
+  .content h1 {
+    color: #800080; /* Purple color */
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  /* Description Styling */
+  .description {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  
+  .description p {
+    color: #800080; /* Purple color for the text */
+    line-height: 1.4;
+  }
+  
+  /* Mentorship Listings Styling */
+  .mentorship-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Individual Mentorship Card */
+  .mentorship-listings .mentorship-card {
+    background-color: #fff;
+    border: 2px solid #ff69b4; /* Light pink border */
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .mentorship-listings .mentorship-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Mentorship Title */
+  .mentorship-listings .mentorship-card h2 {
+    color: #800080; /* Purple color */
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  
+  /* Mentorship Description */
+  .mentorship-listings .mentorship-card p {
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  /* Apply Button Styling */
+  .mentorship-listings .mentorship-card .apply-btn {
+    display: inline-block;
+    background-color: #ff69b4; /* Light pink color */
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+  }
+  
+  .mentorship-listings .mentorship-card .apply-btn:hover {
+    background-color: #c700f2; /* Brighter purple for hover effect */
+  }
+  
+  /* Tablet and Desktop Media Queries */
+  
+  /* Medium-Sized Tablets (min-width: 600px) */
+  @media (min-width: 600px) {
+    .content {
+      padding: 30px;
+      border-radius: 10px;
+    }
+  
+    .content h1 {
+      font-size: 2.5em;
+    }
+  
+    .description {
+      font-size: 1.1em;
+      margin-bottom: 35px;
+    }
+  
+    .mentorship-listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+  
+    .mentorship-listings .mentorship-card {
+      padding: 20px;
+    }
+  }
+  
+  /* Desktops (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .content {
+      max-width: 1200px;
+      padding: 40px;
+      border-radius: 12px;
+    }
+  
+    .mentorship-page {
+      padding: 60px;
+    }
+  
+    .content h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+  
+    .description {
+      font-size: 1.3em;
+      margin-bottom: 40px;
+    }
+  
+    .mentorship-listings {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+  
+    .mentorship-listings .mentorship-card {
+      padding: 25px;
+    }
+  
+    .mentorship-listings .mentorship-card .apply-btn {
+      padding: 12px 25px;
+    }
+  }
+  
+  /* Large Screens (min-width: 1440px) */
+  @media (min-width: 1440px) {
+    .content {
+      padding: 50px;
+      border-radius: 16px;
+    }
+  
+    .mentorship-page {
+      padding: 80px;
+    }
+  
+    .content h1 {
+      font-size: 3.5em;
+    }
+  
+    .mentorship-listings {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+  
+    .mentorship-listings .mentorship-card {
+      padding: 30px;
+    }
+  
+    .mentorship-listings .mentorship-card:hover {
+      transform: scale(1.07);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
