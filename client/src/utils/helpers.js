@@ -12,12 +12,13 @@ export const idbPromise = (storeName, method, object) => {
     let db, tx, store;
 
     request.onupgradeneeded = function (e) {
-      const db = request.result;
-      db.createObjectStore('jobBoard', { keyPath: '_id' });
+      db = request.result; // Use outer db variable
+      db.createObjectStore(storeName, { keyPath: '_id' }); // Use storeName for flexibility
     };
 
     request.onerror = function (e) {
-      console.log('There was an error');
+      console.error('There was an error opening IndexedDB:', e); // Log the error with more context
+      reject(e); // Reject the promise on error
     };
 
     request.onsuccess = function (e) {
@@ -26,7 +27,8 @@ export const idbPromise = (storeName, method, object) => {
       store = tx.objectStore(storeName);
 
       db.onerror = function (e) {
-        console.log('error', e);
+        console.error('Database error:', e);
+        reject(e); // Reject the promise on error
       };
 
       switch (method) {
@@ -42,9 +44,11 @@ export const idbPromise = (storeName, method, object) => {
           break;
         case 'delete':
           store.delete(object._id);
+          resolve(object._id); // Return the ID of the deleted object for confirmation
           break;
         default:
-          console.log('No valid method');
+          console.error('No valid method specified.');
+          reject(new Error('No valid method specified.')); // Reject for invalid method
           break;
       }
 
