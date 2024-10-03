@@ -1,139 +1,100 @@
 /* Navbar Styles */
 
-/* Base (Mobile) Styles */
 .navbar {
-  background-color: #1E0036; /* Dark Purple background */
-  padding: 20px 40px;
+  background-color: #2C003E; /* Rich deep purple background */
+  padding: 15px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for more elegance */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for a more professional look */
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth background and shadow transition on scroll */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar.scrolled {
-  background-color: rgba(30, 0, 54, 0.9); /* Slightly transparent for a layered effect when scrolled */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #250032; /* Darker background when scrolled */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow when scrolled */
 }
 
 .navbar-logo h1 {
-  font-size: 32px;
-  color: #FF4ECD; /* Pink for the logo */
-  font-weight: bold;
-  letter-spacing: 1.5px; /* Slightly increased letter-spacing for an upscale look */
-  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2); /* Soft glow to make it pop */
-  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added smoother transition for text-shadow */
+  font-size: 28px;
+  color: #F8F8FF; /* Soft white text for the logo */
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  transition: color 0.3s ease;
 }
 
 .navbar-logo h1:hover {
-  transform: scale(1.05); /* Subtle zoom effect on hover */
-  text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.4); /* Enhanced glow on hover */
+  color: #FF6EC7; /* Lively pink on hover */
 }
 
 .navbar-links ul {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .navbar-links a {
-  color: #FFFFFF; /* White text */
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 500;
   text-decoration: none;
-  font-size: 20px;
-  font-weight: 600;
-  padding: 10px 15px;
-  border-radius: 10px; /* Softer, more luxurious rounded corners */
-  background: linear-gradient(135deg, transparent, transparent) padding-box, linear-gradient(45deg, #FF4ECD, #4EDFFF) border-box; /* Subtle gradient border */
-  box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.2); /* Subtle shadow effect */
-  transition: color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease; /* Smoother transitions */
+  padding: 10px 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
 }
 
 .navbar-links a:hover {
-  color: #9B51E0; /* Neon Purple on hover */
-  background-color: rgba(255, 255, 255, 0.15); /* Slight white overlay effect */
-  transform: translateY(-5px); /* More noticeable lift on hover */
-  box-shadow: 0 0 20px rgba(155, 81, 224, 0.5); /* Stronger outer glow effect */
+  color: #FF6EC7; /* Pink hover effect */
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
 }
 
-.navbar-links a:active {
-  transform: translateY(0); /* Reset lift effect on click */
-  box-shadow: none; /* Remove shadow on click */
-}
-
-/* Mobile Menu Button Styles */
 .menu-toggle {
-  display: block;
-  background: transparent;
-  border: none;
-  color: #FFFFFF; /* White color for mobile menu button */
-  font-size: 2rem; /* Larger size for visibility */
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-toggle:hover {
-  color: #FF4ECD; /* Pink color for hover effect */
-  transform: rotate(90deg); /* Rotate effect for fun interaction */
+  display: none; /* Hide by default */
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px; /* Adjusted padding for smaller screens */
-  }
-
-  .navbar-logo h1 {
-    font-size: 24px; /* Adjusted for smaller screens */
-  }
-
   .menu-toggle {
-    margin-left: auto; /* Align menu button to the right on mobile */
+    display: block;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .menu-toggle:hover {
+    color: #FF6EC7;
+    transform: rotate(90deg);
   }
 
   .navbar-links {
-    display: none; /* Hide links by default on mobile */
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: rgba(30, 0, 54, 0.95); /* Dark Purple with slight transparency */
+    background-color: #2C003E;
     width: 100%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Shadow for mobile dropdown */
     padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   .navbar-links.active {
-    display: flex; /* Show links when active */
-    align-items: center;
-    justify-content: center;
+    display: flex;
   }
 
   .navbar-links ul {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
   }
 
   .navbar-links a {
-    font-size: 18px;
-    padding: 12px 15px;
-    width: 90%;
-    margin: 0 auto; /* Center items in mobile view */
-  }
-}
-
-/* Desktop-Specific Styles */
-@media (min-width: 769px) {
-  .navbar {
-    padding: 20px 50px; /* Adjust padding for larger screens */
-  }
-
-  .navbar-links a:hover {
-    transform: translateY(-5px) scale(1.05); /* Slight scale on hover for added interactivity */
-    background: linear-gradient(135deg, #9B51E0, #FF4ECD); /* Gradient background on hover */
-    box-shadow: 0 0 25px rgba(155, 81, 224, 0.4); /* Enhanced glow effect for desktop */
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
   }
 }
