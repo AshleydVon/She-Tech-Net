@@ -18,19 +18,18 @@ export const QUERY_COURSES = gql`
 `;
 
 export const QUERY_MENTORSHIPS = gql`
-  query getMentorships($industry: String, $yearsOfExperience: Int) {
-    mentorships(industry: $industry, yearsOfExperience: $yearsOfExperience) {
-      _id
-      user {
-        name
-        email
-      }
-      expertise
-      industry
-      yearsOfExperience
-      availableTimeSlots
+query getMentorships($industry: String, $yearsOfExperience: Int) {
+  mentorships(industry: $industry, yearsOfExperience: $yearsOfExperience) {
+    _id
+    industry
+    yearsOfExperience
+    availableTimeSlots
+    user {
+      firstName
+      lastName
     }
   }
+}
 `;
 
 export const QUERY_JOBS = gql`

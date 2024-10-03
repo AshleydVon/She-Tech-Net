@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'; // Ensure you import useState and useEffect
-import axios from 'axios'; // Make sure axios is installed
+import  { useState, useEffect } from 'react'; 
+import axios from 'axios';
 import '../styles/mainpages.css';
 
 function CoursesPage() {
@@ -10,8 +10,8 @@ function CoursesPage() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/courses'); // Your Express endpoint
-        setCourses(response.data); // Assuming response.data contains the course data
+        const response = await axios.get('http://localhost:5000/api/courses'); 
+        setCourses(response.data); 
       } catch (error) {
         setError(error.message);
       } finally {

@@ -1,34 +1,84 @@
-/* General Footer Styling */
+/* Footer Styles */
+
 .footer {
-  width: 100rem; /* Full width of the page */
-  margin-top: 30px;
-  background: linear-gradient(135deg, #fffeff, #FF4ECD); /* Gradient background from dark purple to bright pink */
-  color: #FFFFFF; /* White text for contrast */
+  background-color: #2C003E; /* Dark purple background */
+  color: #FFFFFF;
+  padding: 50px 0;
   text-align: center;
-  padding: 20px;
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  width: 100%;
+  border-top: 4px solid #FF6EC7; /* Eye-catching pink border */
   position: relative;
+  bottom: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
 }
 
 /* Footer Text Styling */
 .footer p {
+  font-size: 1.1rem;
   margin: 0;
-  font-size: 1rem; /* Base font size */
+  color: #F8F8FF;
+  letter-spacing: 1.1px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Responsive Styling */
-@media (min-width: 768px) {
+.footer p:hover {
+  color: #FF6EC7; /* Pink hover effect for footer text */
+  transform: scale(1.05); /* Subtle enlargement on hover */
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.footer-icons a {
+  color: #FFFFFF;
+  font-size: 2rem; /* Larger, more visible icons */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: #4EDFFF; /* Bright blue for a vibrant hover effect */
+  transform: scale(1.2); /* Larger scaling effect on hover */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.footer-links a {
+  color: #F8F8FF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FF6EC7;
+}
+
+/* Media Query for Smaller Devices */
+@media (max-width: 768px) {
   .footer {
-    width: 100rem;
-    padding: 25px;
-    font-size: 1.1rem; /* Slightly larger font size for tablet */
+    padding: 40px 0;
   }
-}
 
-@media (min-width: 1440px) {
-  .footer {
-    width: 100rem;
-    padding: 30px;
-    font-size: 1.25rem; /* Larger font size for larger screens */
+  .footer p {
+    font-size: 1rem;
+  }
+
+  .footer-icons a {
+    font-size: 1.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
   }
 }
