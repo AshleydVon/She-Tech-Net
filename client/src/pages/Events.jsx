@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_EVENTS } from '../utils/queries';
 import { ADD_EVENT, UPDATE_EVENT, DELETE_EVENT } from '../utils/mutations';
-import '../styles/mainpages.css';
+import '../styles/events.css';
 
 function EventsPage() {
   const { loading, error, data } = useQuery(QUERY_EVENTS);

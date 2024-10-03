@@ -1,0 +1,201 @@
+/* CSS for Events Page */
+
+/* General Styling for Events Page */
+.events-page {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 20px;
+    max-width: 90%;
+    width: 550px;
+    margin: 20px auto;
+  }
+  
+  .events-page h1 {
+    color: #FF4ECD;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto 30px auto;
+  }
+  
+  form input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #9B51E0;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  form input:focus {
+    border-color: #9B51E0;
+    box-shadow: 0 0 5px #9B51E0;
+  }
+  
+  form button {
+    background-color: #FF4ECD;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    max-width: 150px;
+    margin: 20px auto 0 auto;
+  }
+  
+  form button:hover {
+    background-color: #9B51E0;
+    transform: translateY(-3px);
+  }
+  
+  form button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Event Listings Styling */
+  .event-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  /* Event Card Styling */
+  .event-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1.5s ease-out;
+    width: 100%;
+    max-width: 30rem;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .event-card h3 {
+    color: #FF4ECD;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+  }
+  
+  .event-card p {
+    color: #1E0036;
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  .event-card a {
+    color: #4EDFFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .event-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .event-card button {
+    background-color: #FF4ECD;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+  }
+  
+  .event-card button:hover {
+    background-color: #9B51E0;
+    transform: translateY(-3px);
+  }
+  
+  .event-card button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Fade In Keyframes */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media Queries for Larger Screens (Desktop) */
+  @media (min-width: 768px) {
+    .events-page {
+      max-width: 800px;
+      padding: 50px;
+      margin: 80px auto;
+      margin-top:50px ;
+    }
+  
+    .events-page h1 {
+      font-size: 2.5em;
+    }
+  
+    form {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+      max-width: 750px;
+      margin: 0 auto 40px auto;
+    }
+  
+    form input {
+      width: calc(50% - 10px);
+    }
+  
+    form button {
+      max-width: 200px;
+      align-self: flex-end;
+      margin: 0;
+    }
+  
+    .event-listings {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+  
+    .event-card {
+      width: calc(45% - 20px);
+      max-width: 360px;
+    }
+  
+    .event-card h3 {
+      font-size: 1.8em;
+    }
+  
+    .event-card p {
+      font-size: 1.1rem;
+    }
+  
+    .event-card button {
+      max-width: 120px;
+    }
+  }
+  

@@ -1,13 +1,14 @@
 /* Navbar Styles */
 
 .navbar {
-  background-color: #2C003E; /* Rich deep purple background */
+  background-color: #37014c; /* Rich deep purple background */
   padding: 15px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for a more professional look */
   position: sticky;
+  margin-bottom: 55px;
   top: 0;
   z-index: 1000;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -20,7 +21,7 @@
 
 .navbar-logo h1 {
   font-size: 28px;
-  color: #F8F8FF; /* Soft white text for the logo */
+  color: #F8F8FF !important; /* Soft white text for the logo */
   font-weight: 600;
   letter-spacing: 1.2px;
   transition: color 0.3s ease;
