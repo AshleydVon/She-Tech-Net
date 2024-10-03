@@ -9,6 +9,7 @@ SHE-TECH-IN is a tech learning and mentorship platform designed to empower women
 - [Project Structure](#project-structure)
 - [Installation Instructions](#installation-instructions)
 - [Usage Instructions](#usage-instructions)
+- [Screenshots] (#screenshots)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
@@ -108,6 +109,15 @@ she-tech-in/
    ```
 3. **Access the platform**:
    - Open your browser and navigate to `http://localhost:3000`.
+
+## Screenshots of project
+
+![Project Logo](./client/src/assets/logo.png)
+![Project Logo](./client/src/assets/sswelcome.png)
+![Project Logo](./client/src/assets/sshome.png)
+![Project Logo](./client/src/assets/signup.png)
+![Project Logo](./client/src/assets/jobs.png)
+![Project Logo](./client/src/assets/events.png)
 
 ## Future Enhancements
 

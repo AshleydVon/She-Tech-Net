@@ -1,0 +1,188 @@
+/* CSS for Jobs Page */
+
+/* General Styling for Jobs Page */
+.jobs-page {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 20px;
+    max-width: 90%;
+    width: 550px;
+    margin: 20px auto;
+  }
+  
+  .jobs-page h1 {
+    color: #FF4ECD;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+  }
+  
+  /* Job Listings Section */
+  .job-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  
+  .job-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1.5s ease-out;
+    width: 100%;
+    max-width: 30rem;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .job-card h2 {
+    color: #FF4ECD;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+  }
+  
+  .job-card p {
+    color: #1E0036;
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  .job-card a {
+    color: #4EDFFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .job-card a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+  
+  form h2 {
+    color: #FF4ECD;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+  
+  form input,
+  form textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #9B51E0;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+    width: 100%;
+  }
+  
+  form input:focus,
+  form textarea:focus {
+    border-color: #9B51E0;
+    box-shadow: 0 0 5px #9B51E0;
+  }
+  
+  form button {
+    background-color: #FF4ECD;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    max-width: 150px;
+    margin: 20px auto 0 auto;
+  }
+  
+  form button:hover {
+    background-color: #9B51E0;
+    transform: translateY(-3px);
+  }
+  
+  form button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Label Styling for Checkbox */
+  form label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9B51E0;
+    font-weight: bold;
+  }
+  
+  /* Fade In Keyframes */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media Queries for Larger Screens */
+  @media (min-width: 768px) {
+    .jobs-page {
+      max-width: 800px;
+      padding: 50px;
+      margin: 50px auto;
+    }
+  
+    .jobs-page h1 {
+      font-size: 2.5em;
+    }
+  
+    .job-listings {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+  
+    .job-card {
+      width: calc(45% - 20px);
+      max-width: 360px;
+    }
+  
+    form {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+      max-width: 750px;
+      margin: 0 auto 40px auto;
+    }
+  
+    form input,
+    form textarea {
+      width: calc(50% - 10px);
+    }
+  
+    form button {
+      max-width: 200px;
+      align-self: flex-end;
+      margin: 0;
+    }
+  }
+  

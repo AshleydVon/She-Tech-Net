@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_JOBS } from '../utils/queries';
 import { ADD_JOB } from '../utils/mutations';
-import '../styles/mainpages.css';
+import '../styles/jobs.css';
 
 function JobsPage() {
   const { loading, error, data } = useQuery(QUERY_JOBS);

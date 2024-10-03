@@ -37,7 +37,7 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-container flex-row">
         {/* Left side: Logo or Name */}
-        <img src= {logo}  alt="My Photo" className="avatar" width = '50px' height='350px'/> 
+        <img src= {logo}  alt="My Photo" className="avatar" width = '50px' height='50px'/> 
           <h1>
             <Link to="/">SHE-TECH-NET</Link>
           </h1>
