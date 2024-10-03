@@ -9,7 +9,7 @@ SHE-TECH-IN is a tech learning and mentorship platform designed to empower women
 - [Project Structure](#project-structure)
 - [Installation Instructions](#installation-instructions)
 - [Usage Instructions](#usage-instructions)
-- [Screenshots] (#screenshots)
+- [Screenshots](#screenshots)
 - [Deployed Link](#deployed-link)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
