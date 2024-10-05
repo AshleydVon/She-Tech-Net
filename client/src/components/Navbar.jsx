@@ -5,7 +5,7 @@ import logo from "../assets/logo.png"
 
 function Navbar() {
   function handleLogout() {
-    Auth.logout(); // Call the logout function to clear the token and redirect
+    Auth.logout(); 
   }
 
   function showNavigation() {
