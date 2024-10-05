@@ -1,75 +1,101 @@
-/* General Navbar Styling - Mobile First */
+/* Navbar Styles */
+
 .navbar {
-  background: linear-gradient(135deg, #FFFFFF, #FF4ECD);
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  width: 100%;
+  background-color: #37014c; /* Rich deep purple background */
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for a more professional look */
+  position: sticky;
+  margin-bottom: 55px;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.navbar.scrolled {
+  background-color: #250032; /* Darker background when scrolled */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow when scrolled */
 }
 
-.avatar {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  transition: transform 0.3s ease;
-}
-
-.avatar:hover {
-  transform: scale(1.1);
-}
-
-h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #1E0036;
-  transition: color 0.3s ease;
-}
-
-.navbar-links-container {
-  display: none; /* Hidden by default for mobile view */
-}
-
-.navbar-links-container a {
-  color: #1E0036;
-  text-decoration: none;
-  margin-left: 15px;
+.navbar-logo h1 {
+  font-size: 28px;
+  color: #F8F8FF !important; /* Soft white text for the logo */
   font-weight: 600;
+  letter-spacing: 1.2px;
   transition: color 0.3s ease;
 }
 
-.navbar-links-container a:hover {
-  color: #FF4ECD;
+.navbar-logo h1:hover {
+  color: #FF6EC7; /* Lively pink on hover */
 }
 
-/* Media Queries for Larger Screens */
-@media (min-width: 768px) {
-  .navbar-links-container {
-    display: flex; /* Show links on larger screens */
+.navbar-links ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links a {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.navbar-links a:hover {
+  color: #FF6EC7; /* Pink hover effect */
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+}
+
+.menu-toggle {
+  display: none; /* Hide by default */
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
 
-  h1 {
-    font-size: 2rem;
+  .menu-toggle:hover {
+    color: #FF6EC7;
+    transform: rotate(90deg);
   }
 
-  .navbar-container {
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .navbar {
-    padding: 10px;
-    margin-right: 90rem;
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2C003E;
     width: 100%;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar-links a {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
   }
 }
