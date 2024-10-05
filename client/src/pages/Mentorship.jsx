@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_MENTORSHIPS } from '../utils/queries';
-import '../styles/mentorships.css'; 
+import '../styles/mainpages.css'; 
 
 function MentorshipPage() {
   const { loading, error, data } = useQuery(QUERY_MENTORSHIPS);
